@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>五角星评论案列</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        .demo li{
+            color:orange;
+            float: left;
+            list-style: none;
+            font-size: 100px;
+        }
+    </style>
+    <script src="../jquery-1.11.1.min.js"></script>
+    <script>
+        $(function(){
+            var wjx_sel= "★";
+            var wjx_none= "☆";
+            $(".demoul").on("mouseenter","li",function(e){
+                e.stopPropagation();//阻止事件冒泡
+                $(this).text(wjx_sel)
+                        .prevAll()
+                        .text(wjx_sel)
+                        .end()
+                        .nextAll()
+                        .text(wjx_none);
+                //click 事件为所点击的li添加类名，作为标记
+            }).on("click","li",function(){
+                $(this).addClass("clicked").siblings().removeClass("clicked");
+
+            }).on("mouseleave",function(){
+                    //隐式迭代
+                    $(".demoul li").text(wjx_none);//离开的时候先给所有的li给空心五角星
+                    $(".clicked").text(wjx_sel).prevAll().text(wjx_sel).end().nextAll().text(wjx_none);
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="demo">
+        <ul class="demoul">
+            <li>☆</li>
+            <li>☆</li>
+            <li>☆</li>
+            <li>☆</li>
+            <li>☆</li>
+        </ul>
+    </div>
+</body>
+</html>
