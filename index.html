@@ -38,5 +38,27 @@
 			HTML5
 		</div>
 	</div>
+
+	<script>
+		'use strict'
+		var xiaoming = {
+			name:"xiaoming",
+			/*height:"30"*/
+		}
+
+/*		console.log(xiaoming.age);
+*/		xiaoming.age=18;//添加对象的属性
+		delete xiaoming.age;//删除对象的属性
+		console.log(xiaoming["age"]);
+		if('height' in xiaoming ){ //判断 age 是不是 xiaoming对象的属性
+			console.log(xiaoming.height);
+		}else {
+			xiaoming.height=18;
+			console.log(xiaoming.height);
+		}
+		var isP = 'toString' in xiaoming;//toString属性是所有对象都具有的属性，对象最终都会在原型链上指向object
+		xiaoming.hasOwnProperty('name'); // 判断一个属性是否是对象自身拥有的，而不是继承的，用hasOwnProperty()方法;
+		console.log(isP);
+	</script>
 </body>
 </html>
