@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+	<h1>AngularJS ng-model指令</h1>
+	<p>ng-model指令用于绑定应用程序数据到HTML控制器(input select textarea)的值</p>
+	<hr>
+	<p>ng-model指令可以将输入域的值与AngularJS创建的变量绑定</p>
+	<hr>
+	<h3>AngularJS 实例</h3>
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+		名字：<input type="text" ng-model="name">
+		<h1>你输入了：{{name}} </h1>
+	</div>
+	<script type="text/javascript">
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope){
+		$scope.name="john doe";
+	})
+
+	</script>
+</body>
+</html>

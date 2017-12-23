@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	li{
+		list-style: none;
+	}
+	body{
+		background: #333;
+	}
+		.nav{
+			width: 1000px;
+			height: 42px;
+			background: rgba(255,255,255,1) url(images/rss.png) no-repeat right center;
+			margin:100px auto;
+			border-radius: 3px;
+			position: relative;
+		}
+		.nav ul{
+			position: absolute;
+		}
+		.nav li{
+			float: left;
+			width: 83px;
+			height: 42px;
+			text-align: center;
+			line-height: 42px;
+			cursor: pointer;
+
+
+		}
+		.nav span{
+			width: 83px;
+			height: 42px;
+			background: url(images/cloud.gif) no-repeat;
+			display: block;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav" id="nav">
+		<span></span>
+		<ul>
+			<li>首页新闻</li>
+			<li>师资力量</li>
+			<li>活动策划</li>
+			<li>企业文化</li>
+			<li>招聘信息</li>
+			<li>公司简介</li>
+			<li>企业文化</li>
+			<li>招聘信息</li>
+			<li>公司简介</li>
+		</ul>	
+	</div>
+</body>
+</html>
+<script>
+	var nav= document.getElementById("nav");
+	var span= nav.getElementsByTagName("span")[0];
+	var ul = nav.getElementsByTagName("ul")[0];
+	var lis = ul.getElementsByTagName("li");
+	var leader =0,target= 0;
+	var current=0; //用于存储当前的位置
+	for(var i=0;i<lis.length;i++){
+		lis[i].onmouseover = function(){
+			target= this.offsetLeft;
+		}
+		lis[i].onmouseout = function(){
+			target=current;//鼠标离开
+		}
+		lis[i].onclick = function(){
+			current= this.offsetLeft;//点击的时候存储当前位置
+		}
+	} 
+	setInterval(huadong,10);
+	function huadong(){
+		leader= leader+(target-leader)/10;
+		span.style.left= leader+"px";
+	}
+
+</script>

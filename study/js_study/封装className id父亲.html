@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background:pink;
+			margin:10px;
+		}
+
+		#one{
+			width: 1000px;
+			height: auto;
+			margin:0 auto;
+		}
+	</style>
+</head>
+<body>
+<script>
+	window.onload =function(){
+		function getclass(classname,id){
+			//浏览器支持的情况
+			if(document.getElementsByClassName){  
+				
+
+				if(id){ //带ID的 
+					var eleId=document.getElementById(id);
+					return eleId.getElementsByClassName(classname);
+				}
+				else{ //不带Id
+					return document.getElementsByClassName(classname);
+				}
+			}
+
+			//浏览器不支持的情况
+			if(id){  //带id
+				var eleId=document.getElementById(id);
+				var dom = eleId.getElementsByTagName("*");
+				
+			}
+			else{
+					var dom =document.getElementsByTagName("*");
+				}	
+			var arr=[];
+			for(var i=0;i<dom.length;i++){
+					 var txtarr = dom[i].className.split(" ");
+					 for(var j=0;j<txtarr.length;j++){
+					 	if(txtarr[j] ==classname){
+					 		arr.push(dom[i]);
+					 	}
+					 }
+			}
+			return arr;
+		}
+		var test = getclass("test","one");
+		for(var i=0;i<test.length;i++){
+			test[i].style.backgroundColor="purple";
+		}
+	}
+</script>
+	
+
+	<div class="test"></div>
+	<div id="one">
+		<div class="demo test"></div>
+		<div></div>
+		<div class="demo test"></div>
+		<div></div>
+		<div></div>
+		<div class="demo test demo1"></div>
+	</div>
+	<div class="test"></div>
+	<div></div>
+	<div></div>
+
+</body>
+</html>

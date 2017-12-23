@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+<script>
+	window.onload =function(){
+		//获取元素
+		var txt =document.getElementById('txt');
+		var btn = document.getElementById("btn");
+		btn.onclick =function(){   //获取完元素之后，开始写事件
+			var val = txt.value; //这一句必须写在事件函数里面
+			switch(val){
+			case "苹果":
+			alert("苹果的价格是5元");
+			break;
+			case "香蕉":
+			alert("香蕉的价格是2元");
+			break;
+			case "栗子":
+			alert("栗子的价格是3元");
+			break;
+			case "西瓜":
+			alert("西瓜的价格是4元");
+			break;
+			case "桃子":
+			alert("桃子的价格是7元");
+			break;
+			default:
+			alert("对不起，查询不到你输入的水果的价格");
+
+			}
+		}
+		
+	}
+
+
+</script>
+	
+
+
+	<input type="text" id="txt"><button id="btn">查询</button>
+</body>
+</html>

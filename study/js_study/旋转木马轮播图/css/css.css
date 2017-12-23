@@ -1,0 +1,50 @@
+*{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+img{
+    vertical-align: top;
+}
+.warp{
+    width:1200px;
+    margin:100px auto;
+    position: relative;
+}
+.slider ul{
+    width: 1200px;
+    height: 500px;
+    position: relative;
+}
+.slider li{
+    position:absolute;
+    left:0;
+    top:0;
+}
+.slider li img{
+    width: 100%;
+    height: auto;
+}
+.arrow{
+    opacity: 0;
+}
+.arrow a{
+    position: absolute;
+    top:0;
+
+    display: blcok;
+}
+.arrow a.prev{
+    top:50%;
+    margin-top: 111px;
+    left:-50px;
+
+}
+
+.arrow a.next{
+    top:50%;
+    margin-top: 111px;
+    right: -50px;
+}

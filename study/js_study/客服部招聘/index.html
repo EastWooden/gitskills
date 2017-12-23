@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh_CN">
+    <meta charset="UTF-8">
+    <title>诚聘：江北机场特勤、动车餐吧员/安全员、中国银行客服-万州人才网</title>
+    <meta name="keywords" content="江北机场特勤,动车餐吧员/安全员,中国银行客服,万州人才网，万州人才网招聘" >
+    <meta name="description"content="江北机场特勤,动车餐吧员/安全员,中国银行客服,万州人才网，万州人才网招聘"/>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="http://static.wanzhoujob.com/js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+    <div class="topbar clearfix">
+        <div class="w">
+            <ul>
+                <li><a href="http://www.wanzhoujob.com">首页</a></li>
+                <li><a href="http://www.wanzhoujob.com/qiuzhi.html">找工作</a></li>
+                <li><a href="http://www.wanzhoujob.com/jizhao.html">紧急招聘</a></li>
+                <li><a href="http://www.wanzhoujob.com/fair.html">招聘会</a></li>
+                <li><a href="http://www.wanzhoujob.com/news.html">资讯</a></li>
+                <li><a href="http://www.wanzhoujob.com/services/aboutus.html">关于&服务</a></li>
+                <li><a href="http://www.wanzhoujob.com/web/adv/sbdb/index.html">社保代办</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+
+            <img src="http://img.wanzhoujob.com/img/bhbanner2.jpg" alt=""/>
+
+    </div>
+    <div class="main w">
+        <h1>招聘职位</h1>
+        <div class="kefujoburgent">
+           <ul id="jobul">
+               <!--<li>
+                   <h3 class="kefujob-name">票务客服专员</h3>
+
+                   <span class="kefujob-line"></span>
+                   <div class="kefujob-requirement">
+
+                       <p>学历要求 <span>高中</span></p>
+                       <p>性别要求 <span>全职</span></p>
+                       <p>年龄要求 <span>上海</span></p>
+
+                   </div>
+                   <span class="kefujob-line"></span>
+                   <div class="kefujob-requirement">
+
+
+                       <p>工作经验 <span>暂未公开</span></p>
+                       <p>工作地区 <span>18581393227</span></p>
+                       <p>薪资待遇 <span class="kefujob-salary">2500-6000</span></p>
+
+                   </div>
+                   <div class="job-click-detail">
+                       <a href="">点击查看详情</a>
+                   </div>
+               </li>-->
+           </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="w">
+            ©万州人才网 版权所有 重庆优快人力资源管理有限公司旗下产品     增值电信业务经营许可证：渝B2-20150011  法律顾问：左志凌律师(重庆益安律师事务所)
+            招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗！
+        </div>
+
+    </div>
+
+
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+    //读取企业职位
+    $(function () {
+        $.get("/web/company/jobs_list", {limit: "25", comid: "jitqzs4ghd6526"}, function (data) {
+            var da = eval('(' + data + ')');
+            $.each(da, function (i, item) {
+                var html = "<li>";
+                html += "<h3 class=\'kefujob-name\'>"+item.jobsname+"</h3>";
+                html +="<span class=\'kefujob-line\'></span>";
+                html +="<div class=\'kefujob-requirement\'>";
+                html +="<p>学历要求 <span>"+item.degree_cn+"</span></p>";
+                html +="<p>性别要求 <span>"+item.Sex+"</span></p>";
+                html +="<p>年龄要求 <span>"+item.age+"</span></p>";
+                html +="</div>";
+                html +="<span class=\'kefujob-line\'></span>";
+                html +="<div class=\'kefujob-requirement\'>";
+                html +="<p>工作经验 <span>"+item.workyear+"</span></p>";
+                html +="<p>工作地区 <span>"+item.province_cn+"</span></p>";
+                html +="<p>薪资待遇<span class=\'kefujob-salary\'>"+item.dysp+"</span></p>";
+                html +="</div>";
+                html +="<div class=\'job-click-detail\'>";
+                html +="<a href=\"/web/jobs/job_detail/jobsid/" + item.jobsid + ".html\"  target=\"_blank\">点击查看详情</a>";
+                html +="</div>";
+                html +="</li>";
+                $(html).appendTo("#jobul");
+            });
+        });
+    })
+</script>

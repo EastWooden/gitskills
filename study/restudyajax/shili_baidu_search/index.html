@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax 百度搜索实时提示</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		.warp-box{
+			width: 800px;
+			height: auto;
+			overflow: hidden;
+			margin:100px; auto;
+		}
+		.text-search{
+			width: 588px;
+			height: 38px;
+			border: solid 1px #317ef3;
+			border-right-width: 0;
+			vertical-align: top;
+			display: inline-block;
+			padding-left: 10px;
+		}
+		.btn{
+			width: 201px;
+			height: 40px;
+			background: #317ef3;
+			border: 0;
+			vertical-align: top;
+			display: inline-block;
+			color: #ffffff;
+			cursor: pointer;
+		}
+		.box-tishi{
+			width: 800px;
+			height: auto;
+			border: solid 1px #ccc;
+		}
+
+	
+	</style>
+</head>
+<body>
+	<div class="warp-box">
+		<input type="text" name="text-search" class="text-search" id="text-search"><input type="button" name="" class="btn" value="百度一下">
+		<div class="box-tishi" id="box-tishi"></div>
+	</div>
+	
+</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var text_search=document.getElementById("text-search");
+			var box_tishi=document.getElementById("box-tishi");
+			text_search.onkeyup=function(){
+				var text_search_msg = text_search.value;
+				var  list_ul=document.createElement("ul");
+
+				/*创建XMLhttpRequest对象*/
+				var xhr=null;
+				if(window.XMLHttpRequest){
+					xhr=new XMLHttpRequest();
+				}else{
+					xhr=new ActiveXObeject("Microsoft.XMLHTTP");
+				}
+
+				/*初始化*/
+				var url="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+text_search_msg;
+				xhr.open("get",url,true);
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&& xhr.status==200){
+						var data =this.resposeText;
+						for(var i=0;i<data.s.length;i++){
+							var lis=document.createElement("li");
+							lis.innerHTML=data.s[i];
+						}
+
+						list_ul.appchild(lis);
+						box_tishi.appchild(list_ul);
+
+					}
+				}
+
+				xhr.send(null);
+
+			}
+		}	
+	</script>
+</html>

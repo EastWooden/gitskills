@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.11.1.js"></script>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding:0px;
+		}
+
+		.box{
+			width: 750px;
+			height: 880px;
+			background: yellowgreen;
+			margin:20px auto;
+			padding-left: 50px;
+			padding-top: 20px;
+		}
+		select{
+			width: 200px;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+		<select id="province"></select>
+		<select id="city"></select>
+		<select id="area"></select>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		function callback(id,Code,flag){
+			$.ajax({
+				url:'data.php',
+				type:'get',
+				dataType:'jsonp',
+				data:{citycode:Code,flag:flag},
+				success:function(data){ //解析数据
+					$.each(data,function(i,element){
+						var option = $("<option></option>").attr("value",element.code).append(element.name);
+						$("#"+id).append(option);
+					})
+				}
+
+			})
+		}
+		//获取省份信息
+		var province = function(pCode){
+			callback('province',pCode,1);
+		}
+
+		//获取市的信息
+		var city =function(pCode){
+			callback('city',pCode,2);
+		}
+
+		//获取地区信息
+
+		var area = function(cCode){
+			callback('area',cCode,3);
+		}
+
+		//调用获取省份信息
+		province(0);
+		city("110000");
+		area("110100");
+
+		//给省份注册选中事件
+		$("#province").change(function(){
+			$("#city").children("option").remove();
+			var pCode= $(this).val();
+			city(pCode);
+		})
+		//给市注册选中事件
+			$("#city").change(function(){
+			$("#area").children("option").remove();
+			var cCode= $(this).val();
+			area(cCode);
+		})
+
+	})
+
+	</script>
+</body>
+</html>

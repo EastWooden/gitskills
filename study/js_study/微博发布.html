@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>document</title>
+	<style>
+	*{
+		padding:0;
+		margin:0;
+
+	}
+	li{
+		list-style: none;
+	}
+		.box{
+			width: 560px;
+			height: auto;
+			border:solid 1px #333;
+			margin:100px auto;
+			padding:30px 10px 30px 60px;
+		}
+
+		.box textarea {
+			width: 400px;
+			resize:none;
+		}
+
+		.box li{
+			width: 400px;
+			line-height: 30px;
+			border-bottom:dashed 1px #ccc;
+			margin-left: 80px;
+		}
+
+		.shanchu{
+			float: right;
+			margin-top: 8px;
+		}
+	</style>
+</head>
+<body>
+ 	<script>
+ 	window.onload = function(){
+ 		var txt  = document.getElementsByTagName("textarea")[0];
+ 		var btn = document.getElementsByTagName("button")[0];
+ 		var box = document.getElementById("box");
+ 		var boxul = document.createElement("ul");
+ 		box.appendChild(boxul);
+ 		boxul.setAttribute("id","boxul");
+ 		btn.onclick	 = function(){
+ 			if(txt.value == ""){
+ 				alert("输入不能为空");
+ 				return false;
+ 			}
+ 			var lis = document.createElement("li");
+ 			lis.innerHTML = txt.value;
+ 			txt.value="";   //清楚文本框的内容
+ 			var lis1 = boxul.children;
+
+ 			//if else 判断新li 的长度，并将新添加的li置顶
+ 			if(lis1.length==0){ //第一次创建
+ 				boxul.appendChild(lis);
+ 			}
+
+ 			else{  //如果不是第一次创建，将新加的li置顶
+ 				boxul.insertBefore(lis,lis1[0])
+ 			}
+
+ 			var btn2 = document.createElement("button");
+ 			btn2.innerHTML="删除";
+ 			btn2.setAttribute("class","shanchu")
+ 			lis.appendChild(btn2);
+
+
+ 		var boxulid = document.getElementById("boxul");
+ 		var newlis = boxulid.getElementsByTagName("li");
+ 			for(var i=0;i<newlis.length;i++){
+ 				var shanchu_btn = newlis[i].getElementsByTagName("button")[0];
+ 				shanchu_btn.onclick = function(){
+ 					boxulid.removeChild(this.parentNode);
+ 				} 
+ 			}
+ 		}
+ 	}
+
+ 	</script>
+	<div class="box" id="box">
+		微博发布：<textarea name="" id="" cols="30" rows="10"></textarea> <button>发布</button>	
+	</div>
+</body>
+</html>

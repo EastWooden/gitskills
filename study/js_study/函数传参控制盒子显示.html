@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<style>
+	#demo1{
+		width: 200px;
+		height: 200px;
+		background-color: pink;
+		margin: 20px;
+		display: none;
+	}
+		#demo2{
+		width: 200px;
+		height: 200px;
+		background-color: yellowgreen;
+		margin: 20px;
+		display: none;
+	}
+		#demo3{
+		width: 200px;
+		height: 200px;
+		background-color: blue;
+		margin: 20px;
+		display: none;
+	}
+		#demo4{
+		width: 200px;
+		height: 200px;
+		background-color: orange;
+		margin: 20px;
+		display: none;
+	}
+
+
+</style>
+
+<script>
+	function fn(obj){
+		var target = document.getElementById(obj);
+		target.style.display="block";
+	}
+
+</script>
+
+<button onclick="fn('demo1')">显示第一个盒子</button>
+<button onclick="fn('demo2')">显示第二个盒子</button>
+<button onclick="fn('demo3')">显示第三个盒子</button>
+<button onclick="fn('demo4')">显示第四个盒子</button>
+<div id="demo1"></div>
+<div id="demo2"></div>
+<div id="demo3"></div>
+<div id="demo4"></div>	
+</body>
+</html>

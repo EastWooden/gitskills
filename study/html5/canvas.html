@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="border:solid 1px #aaa;margin:50px auto;"></canvas>
+</body>
+	<script type="text/javascript">
+	 var tangram=[
+	 {p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#caff67"},
+	 {p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"#67becf"},
+	 {p:[{x:800,y:400},{x:400,y:400},{x:400,y:800}],color:"orange"}
+	 ]
+	window.onload=function(){
+		var canvas=document.getElementById('canvas');
+		canvas.width=800;
+		canvas.height=800;
+
+		var context=canvas.getContext("2d");
+		for(var i=0;i<tangram.length;i++){
+			draw(tangram[i], context);
+		}
+
+	}
+
+	function draw(piece,cxt){
+		cxt.beginPath();//路径开始
+		cxt.moveTo(piece.p[0].x,piece.p[0].y);
+		for(var i=1;i<piece.p.length;i++){
+			cxt.lineTo(piece.p[i].x,piece.p[i].y);
+		}
+		cxt.closePath();//路径结束
+		cxt.strokeStyle="black";//设置外框线条颜色
+		cxt.lineWidth=3;//设置外框线条宽度
+		cxt.stroke();//绘制线条
+		cxt.fillStyle=piece.color;//设置闭合区域颜色
+		cxt.fill();//填充闭合区域颜色
+	}
+
+	</script>
+</html>

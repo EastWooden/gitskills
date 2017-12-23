@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+		}
+		body{
+			font-size: 12px;
+		}
+		.box{
+			width: 277px;
+			height: 280px;
+			margin: 100px auto;
+			border:solid 1px #d8e5f3;
+			overflow: hidden;
+
+
+		}
+
+		.box dt{
+			font-size: 18px;
+			color:#097dc6;
+			padding-left: 25px;
+			font-weight: bold;
+			line-height: 50px;
+
+		}
+		.dd_t{
+			overflow: hidden;
+		}
+		.icon{
+			width: 50px;
+			height: 50px;
+			background:url(images/astroIcon.png) no-repeat;
+			margin-left: 37px;
+			float: left;
+		}
+		.dd_t-right{
+			float: left;
+			margin-left: 10px;
+		}
+		.yunshi{
+			width: 138px;
+			height: 13px;
+			margin-top: 10px;
+			background:url(images/yunshi.png) no-repeat top right;
+			line-height: 13px;
+			position: relative;
+		}
+		.yunshi span{
+			width: 80px;
+			height: 13px;
+			display: inline-block;
+			background:url(images/yunshi.png) no-repeat left bottom;
+			position: absolute;
+			top:0px;
+			left:58px;
+		}
+		.clear{
+			clear:both;
+		}
+		
+	</style>
+</head>
+<body>
+
+	<script>
+	window.onload = function(){
+		var sele = document.getElementById('sele');
+		var icon = document.getElementById('icon');
+		var dd_b = document.getElementById('dd_b');
+		var span = document.getElementById('span');
+		var score =[10,1,9,7,5,3,2,10,2,10,10,10] //定义数组 ,存放运势评分
+		var attr=["白羊座的运势","金牛座的运势","双子座的运势","巨蟹座的运势","巨蟹座的运势","巨蟹座的运势","巨蟹座的运势","巨蟹座的运势","巨蟹座的运势","巨蟹座的运势"]; //定义数组，存放运势内容
+		sele.onchange =function(){
+			var val =this.value;
+			icon.style.backgroundPositionY=""+(-val*50)+"px"; //更换icon 的背景
+			dd_b.innerHTML=attr[val]; // 更换运势内容
+			span.style.width= ""+score[val]*8+"px";//更换星数
+		}
+		
+			
+		
+	}
+
+
+
+
+	</script>
+
+
+	<div class="box" id="box">
+		<dl>
+			<dt>
+				星座运势
+			</dt>
+			<dd>
+				<div class="dd_t clear">
+					<div class="icon" id="icon"></div>
+					<div class="dd_t-right">
+						<select name="" id="sele">
+							<option value="0">白羊座(03.21-04.19)</option>
+							<option value="1">金牛座(03.21-04.19)</option>
+							<option value="2">双子座(03.21-04.19)</option>
+							<option value="3">巨蟹座(03.21-04.19)</option>
+							<option value="4">狮子座(03.21-04.19)</option>
+							<option value="5">处女座(03.21-04.19)</option>
+							<option value="6">天秤座(03.21-04.19)</option>
+							<option value="7">天蝎座(03.21-04.19)</option>
+							<option value="8">射手座(03.21-04.19)</option>
+							<option value="9">摩羯座(03.21-04.19)</option>
+							<option value="10">水瓶座(03.21-04.19)</option>
+							<option value="11">双鱼座(03.21-04.19)</option>
+						</select>
+						<div class="yunshi" >
+							今日运势：<span id="span"></span>
+						</div>
+
+					</div>
+				</div>
+				<div class="dd_b" id="dd_b">
+					白羊座的运势
+				</div>
+			</dd>
+		</dl>
+	</div>
+</body>
+</html>
+	
+</body>
+</html>

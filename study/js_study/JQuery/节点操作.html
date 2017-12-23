@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JQuery 节点操作</title>
+    <script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+<script>
+    $(function(){
+        $("button:first").click(function(){
+           $("div").append("<p>我是动态创建的P元素</p>")
+        });
+
+        $("button:eq(1)").click(function(){
+           $("<p>通过appendTo追加的P元素</p>").appendTo($("div"));
+        });
+
+        $("button:eq(2)").click(function(){
+            $("div").prepend("<p>通过prepend追加的p元素</p>")
+        });
+
+        $("button:eq(3)").click(function(){
+            $("<p>通过prependTo 追加的p元素</p>").prependTo($("div"));
+        });
+
+        $("button:eq(4)").click(function(){
+            $("div").after("<p>通过after创建的p元素</p>")
+        })
+
+        $("button:eq(5)").click(function(){
+            $("div").before("<p>通过befor创建的p元素</p>")
+        })
+    })
+</script>
+<button>append   在最后追加</button>
+<button>appendTo 在最后追加</button>
+<button>prepend 在最前面追加</button>
+<button>prependTo 在最见面追加</button>
+<button>after 在目标节点之后添加</button>
+<button>befor 在目标节点之前添加</button>
+<div>
+    <h1>我是H1标签</h1>
+</div>
+</body>
+</html>

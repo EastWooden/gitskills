@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+			margin:0;
+			padding:0;
+	}
+
+	.topbar{
+		width: 100%;
+		height: 30px;
+		background: #369;
+	}
+	.topbar a{
+		display: inline-block;
+		line-height: 30px;
+		color:#fff;
+		text-decoration: none;
+		font-size: 12px;
+		margin-left: 30px;
+	}
+
+	.box{
+		width: 300px;
+		height: 300px;
+		box-shadow: 5px 5px 15px #ccc;
+		border:solid 1px #ccc;
+		margin:-150px -150px;
+		padding:5px;
+		display: none;
+		position: absolute;
+		top:50%;
+		left:50%;
+		
+	}
+	.box .box-title{
+		width:100%;
+		height: 20px;
+		background: #389;
+		cursor: move;
+	}
+	.box .box-title span{
+		font-size: 12px;
+		color: #fff;
+		line-height: 20px;
+		height: 20px;
+		cursor: pointer;
+		display: block;
+		float: left;
+	}
+		.box .box-title span.right{
+		float: right;
+	}
+	</style>
+	
+</head>
+<body>
+
+	<div class="topbar" id="topbar">
+		<a href="javascript:;">注册信息</a>
+	</div>
+	<div class="box" id="box">
+		<div class="box-title">
+			<span>注册信息（可以拖拽）</span>
+			<span class="right">【关闭】</span>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	var topbar = document.getElementById("topbar");
+	var btna = topbar.children[0];
+	var box =document.getElementById("box");
+	var drop = box.children[0];
+	var span = box.children[0].children[1];
+	btna.onclick = function(){
+		box.style.display= "block";
+	}
+	span.onclick = function(){
+		box.style.display= "none";
+	}
+
+	drop.onmousedown= function(event){
+		var event =event|| window.event;
+		var positionX =  event.clientX-box.offsetLeft;
+		var positionY =  event.clientY-box.offsetTop;
+
+		document.onmousemove = function(event){
+			var event =event|| window.event;
+			var x =  event.clientX - positionX+150;
+			var y = event.clientY-positionY+150;
+			console.log(x);
+			box.style.top = y+"px";
+			box.style.left= x+"px";
+		}
+	}
+	document.onmouseup = function(){
+		document.onmousemove= null;
+	}
+</script>

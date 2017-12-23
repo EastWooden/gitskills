@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Element.classList</title>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    &lt;!&ndash; 最新的 Bootstrap 核心 JavaScript 文件 &ndash;&gt;
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        nav{
+            width: 800px;
+            height: 50px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            border: solid 1px #cccccc;
+            margin:100px auto;
+        }
+
+        nav .barname{
+            width: 100px;
+            height: 50px;
+            float: left;
+        }
+        nav a{
+            display: block;
+            text-align: center;
+            line-height: 50px;
+            text-decoration:none;
+        }
+        a:hover{
+            text-decoration: none;
+        }
+        nav .barlist{
+            float: left;
+        }
+
+        .barlist li{
+            float: left;
+            width:100px;
+            height: 50px;
+            list-style: none;
+        }
+        .barlist li a{
+            display: block;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            color: #333333;
+
+        }
+        .active{
+            background: #ddd;
+        }
+
+
+
+
+    </style>
+
+</head>
+<body>
+   <nav>
+        <div class="barname">
+            <h3><a href="">Heh</a></h3>
+        </div>
+       <div class="barlist">
+           <ul class="barlistul">
+               <li class="active"><a href="">新闻</a></li>
+               <li class="item"><a href="">咨询</a></li>
+               <li class="item"><a href="">体育</a></li>
+           </ul>
+       </div>
+
+   </nav>
+</body>
+<script>
+    var list = document.querySelectorAll(".barlistul>li"); //直接子代
+
+    for(var i=0;i<list.length;i++){
+        list[i].addEventListener("mouseover",function(e){
+            for(var j=0;j<list.length;j++ ){
+                list[j].classList.remove("active");
+            }
+           this.classList.add("active");
+
+            e.preventDefault();
+
+        });
+    }
+
+    var barname = document.querySelector(".barname");
+
+   barname.addEventListener("click",function(e){
+       var exist = barname.classList.contains("active");//判断当前cLASS有没有active;
+       //toggle 函数的第二个参数为ture 则为添加，为FALSE则删除
+       barname.classList.toggle("active",!exist);
+       e.preventDefault();
+   });
+
+
+</script>
+</html>

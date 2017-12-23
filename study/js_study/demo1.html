@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!--<script type="text/javascript">
+//普通声明方式
+	function myFun(m,n){
+		alert(m+n);
+	}
+	myFun(3,2);
+//使用变量声明函数
+  var fun=function(m,n){
+  	alert(m+n);
+  }
+  fun(3,5);
+ //使用构造函数来声明
+  var nfun=new Function("m","n",'alert(m+n)');
+  nfun(3,7);
+
+</script>-->
+
+
+<!--<script>
+//将有参函数作为参数
+function test2(x,u){
+	return x+u(x)
+}
+function fu(x){
+	return x*x
+}
+alert(test2(10,fu))
+
+//使用函数的返回值作为另一个函数的参数
+function test(x,u){
+	return x+u
+}
+alert(test(10,fu(10)))// 注意这里和上一个的区别——————这里fu(10)引用的是函数的返回值;
+alert(fu);//这里的fu是函数本身
+alert(fu(10));//这里是fu函数本身
+</script>-->
+<script>
+   function checkNum(start,end,check){
+
+   		for(var i=start;i<=end;i++){
+		if(check(i)){
+			document.write(i+"<br>");
+		}
+	}
+   }
+   function check(x){
+   	if(x%3==0){
+   		return true;
+   	}
+   	else{
+   		return false;
+   	}
+   }
+
+   checkNum(1,100,check);
+
+	
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.tab-control a{
+    display:inline-block;
+    text-decoration:none;
+    color:#FFF;
+    height:20px;
+    width:40px;
+    text-align:center;
+    line-height:20px;
+    background:rgba(70,121,189,0.75);
+}
+.tab-control a:hover{
+    background:rgba(70,121,189,1);
+}
+.tabs{
+    position:relative;
+    border:1px solid red;
+    height:200px;
+    width:135px;
+    overflow:hidden;
+}
+.tab{
+    height:100%;
+    width:100%;
+}
+:target{
+    display:block;
+}
+
+
+	</style>
+</head>
+<body>
+	
+<div class="tab-control">
+    <a href="#tab1">tab1</a>
+    <a href="#tab2">tab2</a>
+    <a href="#tab3">tab3</a>
+</div>
+<div class="tabs">
+    <div class="tabs" id="tab1">
+		<img src="css3 tab选项卡/20141117144244526.jpg">
+	</div>
+	<div class="tabs" id="tb2">
+		<img src="css3 tab选项卡/20141117144425815.jpg">
+	</div>
+	<div class="tabs" id="tb3">
+		<img src="css3 tab选项卡/20141117144356453.jpg">
+	</div>
+</div>
+</body>
+</html>

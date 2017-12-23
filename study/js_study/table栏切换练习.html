@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+
+		*{
+			padding:0px;
+			margin:0px;
+		}
+		li{
+			list-style-type:none;
+			cursor: pointer;
+		}
+		#box{
+			width: 1000px;
+			height: auto;
+			margin:100px auto;
+		}
+
+		.bottom{
+			width: 1000px;
+			height: 300px;
+			border:solid 1px #ccc;
+		}
+		.top{
+			width: 500px;
+			height: 30px;
+		}
+		.name1{
+			width: 150px;
+			height: 30px;
+			background: #eee;
+			float: left;
+			margin-right: 10px;
+			text-align: center;
+			line-height: 30px;
+
+		}
+		.current{
+			background: #fff;
+			border:solid 1px #ccc;
+			border-top:4px solid orange;	
+			width: 150px;
+			height: 26px;
+			background: #fff;
+			float: left;
+			margin-right: 10px;
+			text-align: center;
+			line-height: 30px;
+		}
+		.bottom li{
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+<script>
+	window.onload =function(){
+		var top = document.getElementById('top');
+		var lis1 = top.getElementsByTagName('li');
+		var lis2 = document.getElementById('bottom').getElementsByTagName('li');
+		for(var i=0;i<lis1.length;i++){
+			lis1[i].index=i;//获取当前索引号
+			lis1[i].onclick =function(){
+				for(var j=0;j<lis1.length;j++)//在改变自己之前，必须先让其他的元素处于默认状态
+				{
+					lis1[j].className="name1";
+					lis2[j].style.display="none";
+				}
+				this.className="current";  //设定当前的类名
+				lis2[this.index].style.display="block"; //让当前的附属框显示出来
+			}
+		}
+	}
+</script>
+<div id="box">
+	<div class="top" id="top">
+		<ul>
+			<li class="current">切换内容一</li>
+			<li class="name1">切换内容二</li>
+			<li class="name1">切换内容三</li>
+		</ul>
+	</div>
+	<div class="bottom" id="bottom">
+		<ul>
+			<li style="display:block;">    
+
+        本场招聘会展位规模173家，涉及重庆周边开县、云阳、奉节、忠县、巫山、巫溪等，提供的就业岗位5700个，求职人数1万人以上，同时，开展了一系列的求职专项活动，历时14届的渝东北地区万人招聘会比往届规模更大，专业性、区域性更强，亮点更多，围绕人才节的活动更为精彩纷呈。</li>
+			<li>黄金十月，人才活跃。为满足各企业人才招聘与储备需求，让更多的求职朋友找到更好的工作，2015秋季暨第14届渝东北地区大型万人招聘会，于2015年10月17日在汇杰人才市场成功举办。</li>
+			<li>3</li>
+		</ul>
+	</div>
+
+</div>
+
+	
+</body>
+</html>

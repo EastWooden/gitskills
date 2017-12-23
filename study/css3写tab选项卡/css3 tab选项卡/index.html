@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3写tab选项卡</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+		}
+		.warp{
+			width: 1000px;
+			height: auto;
+			margin:200px auto;
+			position: relative;
+		}
+		.ullist {
+			width: 1000px;
+			height: 40px;
+			border-bottom: solid 1px #ccc;
+		}
+
+		.ullist li{
+			width:100px;
+			height: 36px;
+			float: left;	
+			margin-right: 20px;
+			text-align: center;
+			cursor: pointer;
+
+		}
+		.ullist li:hover{
+			border-bottom: 4px #f5392f solid;
+		}
+		.list{
+			margin-top: 10px;
+			position: absolute;
+			top:50px;
+			left:0;
+		}
+
+		
+
+		#list1:target,#list2:target,#list3:target{
+			z-index: 1;
+		}
+
+	</style>
+</head>
+<body>
+<div class="warp">
+	<ul class="ullist">
+		<li><a href="#list1"></a>选项一</li>
+		<li><a href="#list2"></a>选项二</li>
+		<li><a href="#list3"></a>选项三</li>
+	</ul>
+	<div class="list" id="list1">
+		<img src="20141117144244526.jpg">
+	</div>
+	<div class="list" id="list2">
+		<img src="20141117144425815.jpg">
+	</div>
+	<div class="list" id="list3">
+		<img src="20141117144356453.jpg">
+	</div>
+</div>
+	
+</body>
+</html>

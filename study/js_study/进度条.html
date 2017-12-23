@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.scroll{
+			width:800px;
+			height: 8px;
+			background: #ccc;
+			margin:100px;
+			position: relative;
+		}
+		.bar{
+			width:8px;
+			height: 23px;
+			background: #4a77b3;
+			position: absolute;
+			top:-8px;
+			left:7;
+			cursor: pointer;
+		}
+		.mask{
+			width:0px;
+			height: 100%;
+			background: #4a77b3;
+			position: absolute;
+			left:0;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+	<script>
+	window.onload = function(){
+		var scrollbar = document.getElementById("scrollbar");
+		var bar = scrollbar.children[0];
+		var mask = scrollbar.children[1];
+		var jindu  = document.getElementById("jindu");
+		bar.onmousedown = function(event){
+			var that = this;
+			var barleft = event.clientX- this.offsetLeft;
+			document.onmousemove = function(event){
+				var event = event || window.event;
+				var leftval= event.clientX- barleft;//算出拖拽走的距离
+				that.style.left = leftval + "px";
+				var val = parseInt(that.style.left);
+				if(val <0){
+					that.style.left = 0;
+				}
+				else if(val >scrollbar.offsetWidth - that.offsetWidth){
+					that.style.left =scrollbar.offsetWidth+"px"; 
+				}
+				mask.style.width = that.style.left;
+
+				jindu.innerHTML ="已经走了" +parseInt((parseInt(mask.style.width)/scrollbar.offsetWidth)*100)+"%";
+
+				window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty(); //防止拖动选择
+			}
+
+			document.onmouseup = function(){
+				document.onmousemove = null;//弹起鼠标不做任何操作
+			}
+		}
+
+		
+
+	}
+
+	</script>
+	<div class="scroll" id="scrollbar">
+		<div class="bar"></div>
+		<div class="mask"></div>
+	</div>
+
+
+	<div class="jindu" id="jindu"></div>
+</body>
+</html>

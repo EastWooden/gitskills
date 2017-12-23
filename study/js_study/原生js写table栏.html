@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		#box{
+			width: 500px;
+			height: auto;
+			border: solid 1px #ccc;
+		}
+
+		.bottom div{
+			width: 500px;
+			height: 100px;
+			
+			display: none;
+		}
+		.current{
+			background: pink;
+		}
+
+	</style>
+</head>
+<body>
+
+<script>
+	window.onload = function(){
+		var btns = document.getElementsByTagName("button");
+		var bottom = document.getElementById("bottom");
+		var divs = bottom.getElementsByTagName('div');
+		for(var i= 0;i<btns.length;i++){
+			btns[i].index=i; //得到当前的索引号
+			btns[i].onclick =function(){
+				for(var j= 0;j<btns.length;j++){ //让所有的BTN的类名都清空，并且让所有的div都隐藏
+					btns[j].className= "";
+					divs[j].style.display="none";
+
+				}
+
+				this.className = "current";
+				divs[this.index].style.display="block";
+			}
+		}
+	}
+</script>
+<div id="box">
+	<div class="top">
+		<button class="current">第1个</button>
+		<button>第2个</button>
+		<button>第3个</button>
+		<button>第4个</button>
+		<button>第5个</button>
+	</div>
+	<div class="bottom" id="bottom">
+		<div style="display:block;">1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+	</div>
+</div>
+</body>
+</html>

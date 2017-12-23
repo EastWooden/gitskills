@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		.red{
+			background-color:red;
+		}
+
+	</style>
+<body>
+<script>
+	window.onload =function(){
+		var btns = document.getElementsByTagName('button');
+		for(var i= 0;i<btns.length;i++){
+			btns[i].index= i;//增加新的属性
+			btns[i].onclick = function(){
+				alert(this.index);
+				//点击完毕之后，首先要排除所有的人
+				for(var i= 0;i<btns.length;i++){
+
+					btns[i].className= "";
+				}
+				//排除外其他的之后，再给自己加上
+				this.className = "red";
+			}
+		}
+	}
+
+
+</script>
+
+
+
+<button>去人</button>
+<button>去人</button>
+<button>去人</button>
+<button>去人</button>
+<button>去人</button>
+<button>去人</button>
+	
+</body>
+</html>

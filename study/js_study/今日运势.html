@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+		}
+		body{
+			font-size: 12px;
+		}
+		.box{
+			width: 277px;
+			height: 280px;
+			margin: 100px auto;
+			border:solid 1px #d8e5f3;
+			overflow: hidden;
+
+
+		}
+
+		.box dt{
+			font-size: 18px;
+			color:#097dc6;
+			padding-left: 25px;
+			font-weight: bold;
+			line-height: 50px;
+
+		}
+		.dd_t{
+			overflow: hidden;
+		}
+		.icon{
+			width: 50px;
+			height: 50px;
+			background:url(images/astroIcon.png) no-repeat;
+			margin-left: 37px;
+			float: left;
+		}
+		.dd_t-right{
+			float: left;
+			margin-left: 10px;
+		}
+		.yunshi{
+			width: 138px;
+			height: 13px;
+			margin-top: 10px;
+			background:url(images/yunshi.png) no-repeat top right;
+			line-height: 13px;
+			position: relative;
+		}
+		.yunshi span{
+			width: 80px;
+			height: 13px;
+			display: inline-block;
+			background:url(images/yunshi.png) no-repeat left bottom;
+			position: absolute;
+			top:0px;
+			left:58px;
+		}
+		.clear{
+			clear:both;
+		}
+		.dd_b li{
+			display: none;
+			padding:20px 10px 0px 10px;
+		}
+		.dd_b li.show{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+
+	<script>
+	window.onload = function(){
+		var sele = document.getElementById('sele');
+		var icon = document.getElementById('icon');
+		var box = document.getElementById('box');
+		var lis = box.getElementsByTagName('li');
+		var span = document.getElementById('span');
+		sele.onchange =function(){
+			for(var i=0;i<lis.length;i++){
+				lis[i].className="";
+			}
+			
+			var val=this.value;
+			switch(val){
+				case "1":
+				icon.style.backgroundPositionY="0px";
+				lis[0].className="show";
+				span.style.width= "0px";
+				break;
+				case "2":
+				icon.style.backgroundPositionY="-50px";
+				lis[1].className="show";
+				span.style.width= "16px";
+				break;
+				case "3":
+				icon.style.backgroundPositionY="-100px";
+				lis[2].className="show";
+				span.style.width= "32px";
+				break;
+				case "4":
+				icon.style.backgroundPositionY="-150px";
+				lis[3].className="show";
+				span.style.width= "64px";
+				break;
+				case "5":
+				icon.style.backgroundPositionY="-200px";
+				lis[4].className="show";
+				span.style.width= "80px";
+				break;
+				case "6":
+				icon.style.backgroundPositionY="-250px";
+				lis[5].className="show";
+				span.style.width= "80px";
+				break;
+				case "7":
+				icon.style.backgroundPositionY="-300px";
+				lis[6].className="show";
+				span.style.width= "80px";
+				break;
+				case "8":
+				icon.style.backgroundPositionY="-350px";
+				lis[7].className="show";
+				span.style.width= "80px";
+				break;
+				case "9":
+				icon.style.backgroundPositionY="-400px";
+				lis[8].className="show";
+				span.style.width= "80px";
+				break;
+				case "10":
+				icon.style.backgroundPositionY="-450px";
+				lis[9].className="show";
+				span.style.width= "80px";
+				break;
+				case "11":
+				icon.style.backgroundPositionY="-500px";
+				lis[10].className="show";
+				span.style.width= "80px";
+				break;
+				case "12":
+				icon.style.backgroundPositionY="-550px";
+				lis[11].className="show";
+				span.style.width= "80px";
+				break;
+			}
+			
+		}
+	}
+
+
+
+
+	</script>
+
+
+	<div class="box" id="box">
+		<dl>
+			<dt>
+				星座运势
+			</dt>
+			<dd>
+				<div class="dd_t clear">
+					<div class="icon" id="icon"></div>
+					<div class="dd_t-right">
+						<select name="" id="sele">
+							<option value="1">白羊座(03.21-04.19)</option>
+							<option value="2">金牛座(03.21-04.19)</option>
+							<option value="3">双子座(03.21-04.19)</option>
+							<option value="4">巨蟹座(03.21-04.19)</option>
+							<option value="5">狮子座(03.21-04.19)</option>
+							<option value="6">处女座(03.21-04.19)</option>
+							<option value="7">天秤座(03.21-04.19)</option>
+							<option value="8">天蝎座(03.21-04.19)</option>
+							<option value="9">射手座(03.21-04.19)</option>
+							<option value="10">摩羯座(03.21-04.19)</option>
+							<option value="11">水瓶座(03.21-04.19)</option>
+							<option value="12">双鱼座(03.21-04.19)</option>
+						</select>
+						<div class="yunshi" >
+							今日运势：<span id="span"></span>
+						</div>
+
+					</div>
+				</div>
+				<div class="dd_b">
+					<ul>
+						<li class="show">陌羽工作室成立于2017年5月1日。目前拥有虎牙直播公会和王者荣耀专业代打团队 </li>
+						<li>万州人才网（www.wanzhoujob.com）属重庆优快人力资源管理有限公司旗下网站，成立于2007年4月，是渝东北地区专业且具影响力的人力资源服务平台，自创办以来，服务企业超过10000家，求职人员超500万次，创造了巨大的社会效益。</li>
+						<li>我们为企业提供人才查询、职位发布、广告制作、现场招聘、专场招聘、人事代理、劳务派遣、人力资源培训等综合人力资源服务。</li>
+						<li>旗下现有：万州人才网、汇杰人才市场、汇杰职业培训学校、汇杰创客工场，汇杰职工帮扶站，以及万州区中小企业公共服务中心。</li>
+						<li>旗下现有：万州人才网、汇杰人才市场、汇杰职业培训学校、汇杰创客工场，汇杰职工帮扶站，以及万州区中小企业公共服务中心。</li>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>5</li>
+						<li>4</li>
+						<li>6</li>
+						<li>8</li>
+					</ul>
+				</div>
+			</dd>
+		</dl>
+	</div>
+</body>
+</html>

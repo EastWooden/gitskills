@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{
+		width: 100px;
+		height: 300px;
+	}
+	div.left{
+		background: pink;
+		float: left;
+	}
+	div.right{
+		background: purple;
+		float: right;
+	}
+	</style>
+</head>
+<body>
+	<script>
+	window.onload = function(){
+		function $(id){
+			return document.getElementById(id);
+		}
+		function hide(id){
+			$(id).style.display= "none";
+		}
+		setTimeout(hidee,5000);//5秒钟之后去执行hidee函数，只执行一次
+		function hidee(){
+			hide("left");
+			hide("right");
+		}
+
+	}
+
+	</script>
+	<div class="left" id="left">		
+	</div>
+	<div class="right" id="right">
+		
+	</div>
+</body>
+</html>

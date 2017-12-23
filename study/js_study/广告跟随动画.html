@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			height: 3000px;
+
+		}
+		.adv{
+			width: 100px;
+			height: 330px;
+			background: yellowgreen;
+			position: absolute;
+			top:50px;
+			left:20px;
+		}
+		.w{
+			width: 1024px;
+			height: auto;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="adv" id="adv"></div>
+	<div class="pra w">
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+		<p>窗前明月光，疑似地上床</p>
+	</div>
+</body>
+</html>
+<script src ="js/myjs.js" type= "text/javascript"></script>
+<script>
+	//封装scroll
+/*	function scroll(){
+		if(window.pageYOffset!= null){
+			return{
+				left:window.pageXOffset,
+				top:window.pageYOffset
+			}
+		}
+		else if(document.compatMode = "CSS1Compat"){
+			return{
+				left:document.documentElement.scrollLeft,
+				top:document.documentElement.scrollTop
+			}
+		}
+		return{
+			left:document.body.scrollLeft,
+			top:document.body.scrollTop
+		}
+
+	}
+	/*封装scroll结束*/
+
+	/*封装document.getElementById()*/
+
+/*	function $(id){
+		return document.getElementById(id);
+	}*/
+
+	var leader= 0;
+	var target = 0;
+	var timer =null;
+	var advTop = $("adv").offsetTop;
+	window.onscroll = function(){
+		clearInterval(timer);
+		target = scroll().top+advTop;
+		console.log(target);
+		timer = setInterval(function(){
+			leader = leader+(target-leader)/10;
+			$("adv").style.top=leader+"px";
+
+		},30)
+	}
+
+
+</script>

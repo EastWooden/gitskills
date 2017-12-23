@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	window.onload = function(){
+		var btn = document.getElementsByTagName("button")[0];
+		var num=10;//计数
+		var timer =null;//定时器的名字
+		btn.onclick= function(){
+			clearInterval(timer);//先清除掉原理的定时器;不然有一个BUG,点一次就会有一个定时器;
+			var that = this;  
+			this.disabled= true;//按钮不可用，变成灰色的
+			timer=setInterval(sendMessage,1000);
+			
+			function sendMessage(){
+			num--;
+			if(num>=0){
+				that.innerHTML = "还剩余"+num+"s再次获取短信";
+			}
+			else{
+				that.disabled=false;
+				that.innerHTML="重新发送短信";
+				clearInterval(timer);
+				num=10;	
+			}
+
+			
+			}
+		}
+
+	}
+
+	</script>
+	<input type="text">
+	<button>点击获取验证码</button>
+	
+</body>
+</html>

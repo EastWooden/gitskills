@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .warp-order{
+            width: 317px;
+            height: 50px;
+            background: dodgerblue;
+            margin:100px auto;
+        }
+        .warp-order span{
+            width: 100px;
+            text-align: center;
+            display: inline-block;
+            line-height: 50px;
+            border-right: solid #ffffff 1px;
+            cursor: pointer;
+        }
+        .warp-order span.last{
+            border-right: none;
+        }
+        .warp-order span ul{
+            display: none;
+        }
+        .warp-order span ul li{
+            text-align: center;
+            background: deepskyblue;
+            margin-bottom: 1px;
+            heigth:20px;
+            line-height: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+        <div class="warp-order" id="warp-order">
+            <div class="yijiorder">
+                 <span>
+                    新闻
+                    <ul>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                    </ul>
+                </span>
+                <span>
+                    动态
+                    <ul>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                    </ul>
+                </span>
+                <span class="last">
+                    资讯
+                    <ul>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+</body>
+</html>
+<script>
+    //获取对象
+
+    function List(id){  //获取对象  //构造函数
+        this.id= document.getElementById(id);
+        this.spans =this.id.children[0].children;
+    }
+    //执行动作
+    List.prototype.Init=function(){ //遍历所有的span  //显示 隐藏
+        var that=this;
+        for(var i=0;i<this.spans.length;i++){
+            this.spans[i].onmouseover= function(){
+
+                that.show(this.children[0]);
+            }
+
+            this.spans[i].onmouseout = function () {
+                that.hide(this.children[0]);
+            }
+        }
+
+    }
+    //显示模块
+    List.prototype.show=function(obj){
+        obj.style.display= "block";
+    }
+    //隐藏模块
+    List.prototype.hide=function(obj){
+        obj.style.display="none";
+    }
+
+    var warpOrder= new List("warp-order");
+    warpOrder.Init();
+
+
+
+
+</script>

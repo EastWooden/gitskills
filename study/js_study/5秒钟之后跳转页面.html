@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--<script>
+	window.onload = function(){
+		var demo  = document.getElementsByTagName("div")[0];
+		var count = 5;
+		var speed = 1000;
+		setTimeout(gopage,speed); //1秒钟之后去执行gopage这个函数
+		function gopage(){ //递归
+			count&#45;&#45;;//控制秒数；
+			demo.innerHTML="<a href='http://www.baidu.com'>本页面将在"+count+"秒钟之后跳转</a>"
+			if(count<=0){
+				window.location.href= "http://www.baidu.com";
+			}
+			else{
+				setTimeout(gopage,speed);
+			}
+		}
+	}
+
+	</script>-->
+	<div class="demo">
+	
+	</div>
+</body>
+</html>
+<!--<script>
+	window.onload = function(){
+		var demo =document.getElementsByTagName("div")[0];
+		var count =5;
+		setTimeout(gopage,1000);
+		function gopage(){
+			count&#45;&#45;;
+			demo.innerHTML= "<a href='http://www.baidu.com'>本页面将在"+count+"秒之后跳转</a>";
+			if(count<=0){
+				window.location.href="http://www.baidu.com";
+			}
+			else{
+				setTimeout(gopage,1000);
+			}
+		}
+
+	}
+</script>-->
+
+<script>
+	//for循环打印金字塔
+	var n;
+	for(var i=1;i<=100;i++){
+		n=i*2;
+		document.write("<hr width='"+n+"%'>");
+	}
+
+</script>
+

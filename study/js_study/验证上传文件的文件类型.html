@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="file" name="pic" id="pic"><span></span>
+	<script>
+		var pic = document.getElementById("pic");
+		
+		pic.onchange = function(){
+			var path= pic.value; //获取上传文件的文件名
+			var num= path.lastIndexOf("."); //获取最后一个"."在文件名中的位置
+			var str= path.substr(num).toLowerCase();//从“.”位置开始取，取到最后一个字符
+			alert(str);
+			if(str ==".jpg" || str ==".gif" || str ==".png"){
+				this.nextSibling.innerHTML = "文件格式正确";
+			}
+			else{
+				this.nextSibling.innerHTML = "文件格式错误";
+			}
+
+		}
+
+	</script>
+</body>
+</html>

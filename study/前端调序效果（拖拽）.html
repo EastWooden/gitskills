@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>广告位置调整</title>
+    <style type="text/css">
+        .div_list{ width: 100%}
+        .brick{ height: 68px; width: 190px; background:#f2dede; float: left; border: 1px solid #9A9A9A; margin:20px; position: relative}
+        .brick .delete{ cursor:pointer; position: absolute; right:0px; width:20px; height:20px; text-align: center; text-decoration: none; background: #000000; color: #fff; font-size: 12px;}
+        .brick .info{ cursor: auto; position: absolute; bottom:0px; height: 16px; width: 100%; background: #000000; color: #fff; font-size: 12px; line-height:16px;}
+        .at{position: absolute; top: 0; background:#f31a16; height: 20%; line-height: 16px; width: 100%; color: #fff; font-size: 14px;}
+        #box {
+            float: left; width: 100%;
+        }
+        .item {
+            border-radius: 5px;
+            float: left;
+            background: goldenrod;
+            z-index: 1;
+            cursor: move;
+        }
+        .draging {
+            position: absolute;
+            background: goldenrod;
+            box-shadow: 0 0 2px 2px #555;
+            border-radius: 5px;
+            z-index: 500;
+        }
+        .moving {
+            border: 1px dashed gray;
+            background: white;
+        }
+
+        .save{
+            height: 36px; width: 120px; background: #D91600; color: #fff; border: 0;cursor:pointer; margin-left:20px; margin-top: 30px;;
+        }
+    </style>
+</head>
+<body>
+<section class='div_list'>
+    <form action="http://www.wanzhoujob.com/admin/set_ad_sort" method="post" name="Form" id="Form">
+        <input type="hidden" name="_token" value="XOPQ58xxPa2EuLZVSU3j54E7DRmuDWHj57Yn5WFx">
+    <div id="box">
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,319)">-</a>
+            <input type="hidden" name="sort_array[319]" id="sort_array" value="1">
+            <img src="http://store.wanzhoujob.com/advlogo/5N3LMSTP9Y3561.gif" width="190" height="68">
+                            <div class="info">2018-09-19</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,320)">-</a>
+            <input type="hidden" name="sort_array[320]" id="sort_array" value="2">
+            <img src="http://store.wanzhoujob.com/advlogo/ZWCHTNWNRN1983.gif" width="190" height="68">
+                            <div class="info">2018-06-12</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,341)">-</a>
+            <input type="hidden" name="sort_array[341]" id="sort_array" value="3">
+            <img src="http://store.wanzhoujob.com/advlogo/NN6PQRTXTL7198.gif" width="190" height="68">
+                            <div class="info">2018-03-20</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,323)">-</a>
+            <input type="hidden" name="sort_array[323]" id="sort_array" value="4">
+            <img src="http://store.wanzhoujob.com/advlogo/N65HK5ISLB8663_4.gif" width="190" height="68">
+                            <div class="info">2018-09-19</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,391)">-</a>
+            <input type="hidden" name="sort_array[391]" id="sort_array" value="5">
+            <img src="http://store.wanzhoujob.com/advlogo/USDDCLR1TX3805.gif" width="190" height="68">
+                            <div class="info">2018-02-22</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,478)">-</a>
+            <input type="hidden" name="sort_array[478]" id="sort_array" value="6">
+            <img src="http://store.wanzhoujob.com/advlogo/ID7DSM5G1U5658_4.jpg" width="190" height="68">
+                            <div class="info">2018-04-03</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,474)">-</a>
+            <input type="hidden" name="sort_array[474]" id="sort_array" value="7">
+            <img src="http://store.wanzhoujob.com/advlogo/JG3EMK1Z1E6290_4.gif" width="190" height="68">
+                            <div class="info">2018-03-08</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,534)">-</a>
+            <input type="hidden" name="sort_array[534]" id="sort_array" value="8">
+            <img src="http://store.wanzhoujob.com/advlogo/BRL6D9HV4D9464_4.gif" width="190" height="68">
+                            <div class="info">2018-07-17</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,536)">-</a>
+            <input type="hidden" name="sort_array[536]" id="sort_array" value="9">
+            <img src="http://store.wanzhoujob.com/advlogo/YGRXXK8JNC9889_4.jpg" width="190" height="68">
+                            <div class="info">2018-02-16</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,329)">-</a>
+            <input type="hidden" name="sort_array[329]" id="sort_array" value="10">
+            <img src="http://store.wanzhoujob.com/advlogo/UI4F7XSIMP5753_4.gif" width="190" height="68">
+                            <div class="info">2018-05-05</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,525)">-</a>
+            <input type="hidden" name="sort_array[525]" id="sort_array" value="11">
+            <img src="http://store.wanzhoujob.com/advlogo/SQYI9T0IXT1828_4.jpg" width="190" height="68">
+                            <div class="info">2018-03-20</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,517)">-</a>
+            <input type="hidden" name="sort_array[517]" id="sort_array" value="12">
+            <img src="http://store.wanzhoujob.com/advlogo/46BDPNZ84I4198_4.gif" width="190" height="68">
+                            <div class="info">2018-02-05</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,530)">-</a>
+            <input type="hidden" name="sort_array[530]" id="sort_array" value="13">
+            <img src="http://store.wanzhoujob.com/advlogo/BTHVH4CFUQ4401_4.jpg" width="190" height="68">
+                            <div class="info">2018-01-27</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,531)">-</a>
+            <input type="hidden" name="sort_array[531]" id="sort_array" value="14">
+            <img src="http://store.wanzhoujob.com/advlogo/MUFMHSKY2Z3677_4.jpg" width="190" height="68">
+                            <div class="info">2018-01-01</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,523)">-</a>
+            <input type="hidden" name="sort_array[523]" id="sort_array" value="15">
+            <img src="http://store.wanzhoujob.com/advlogo/UCRBS0NC592375_4.gif" width="190" height="68">
+                            <div class="info">2018-04-01</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,537)">-</a>
+            <input type="hidden" name="sort_array[537]" id="sort_array" value="16">
+            <img src="http://store.wanzhoujob.com/advlogo/E1U2FPLCL68384_4.gif" width="190" height="68">
+                            <div class="info">2017-12-18</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,404)">-</a>
+            <input type="hidden" name="sort_array[404]" id="sort_array" value="17">
+            <img src="http://store.wanzhoujob.com/advlogo/N08KEF73UC4228.gif" width="190" height="68">
+                        <div class="info" style=" background: #D91600">2017-12-01 已到期</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,529)">-</a>
+            <input type="hidden" name="sort_array[529]" id="sort_array" value="18">
+            <img src="http://store.wanzhoujob.com/advlogo/CYDQH7LGPR1987_4.jpg" width="190" height="68">
+                            <div class="info">2018-11-12</div>
+                    </div>
+                    <div class='brick item'>
+                        <a class='delete' onclick="shieldAd(this,532)">-</a>
+            <input type="hidden" name="sort_array[532]" id="sort_array" value="19">
+            <img src="http://store.wanzhoujob.com/advlogo/DMEUMFPR7F9820_4.jpg" width="190" height="68">
+                            <div class="info">2018-07-04</div>
+                    </div>
+            </div>
+    <p>
+        <input name="save" type="submit" class="save" value="保存排序"/>
+    </p>
+    </form>
+</section>
+</body>
+<script type="text/javascript" src="http://www.wanzhoujob.com/default/js/jquery.js"></script>
+<script type="text/javascript" src="http://www.wanzhoujob.com/vendor/org/layer/layer.js"></script> <!-- 弹出层组件 -->
+<script type="text/javascript">
+
+    
+    function shieldAd(othis,id){
+        layer.confirm('您真的要屏蔽这个广告吗？', {
+            btn: ['是','取消'] //按钮
+        }, function(){
+            $.getJSON("http://www.wanzhoujob.com/admin/shield_ad", { id: id}, function(json){
+                if(json.status=='200'){
+                    $(othis).parents('.brick').remove();
+                    layer.msg('操作成功!', {
+                        time: 2000
+                    });
+                }else{
+                    layer.msg('操作失败', {
+                        time: 2000
+                    });
+                }
+            });
+
+        }, function(){
+            layer.msg('取消操作', {
+                time: 2000
+            });
+        });
+    }
+
+    var bstop = true;
+    $('#box .brick').on('mousedown','img', function(e) {
+        if (bstop) {
+            bstop = false;
+            var that = $(this).parents('.brick');
+            var disx = e.clientX-$(that).offset().left; //获取的拖拽过程的短线的长度（鼠标的位置离盒子边缘的位置）
+            var disy = e.clientY-$(that).offset().top;
+            var $clone = that.clone(); //克隆
+            //$('#box').append("<div class='brick item'>"+that.html()+"</div>"); //追加到box里面
+            $clone.addClass('draging').css({ //对克隆的盒子设置类名以及位置
+                left: $(that).position().left,
+                top: $(that).position().top
+            });
+            $('#box').append($clone); //追加到box里面
+
+            $(that).addClass('moving').html(''); //被克隆的元素添加类移除内容
+            $('#box').on('mousemove', function(e) { //对克隆的盒子进行拖拽
+                $clone.css({
+                    left: e.pageX - $(this).offset().left - disx,
+                    top: e.pageY - $(this).offset().top - disy
+                })
+            });
+
+            $clone.on('mouseup', function() {
+                $('#box').off('mousemove'); //取消mousemove事件
+                var minIndex = $(that).index(); //最小索引赋初始值
+                var minValue = 1000; //初始化最小值，用来存储所有盒子的最小值
+                $('#box .brick').not(':last').each(function() { //不包括克隆的那个盒子
+                    var smalldistance = Math.sqrt(Math.pow($clone.position().left - $(this).position().left, 2) + Math.pow($clone.position().top - $(this).position().top, 2)); //利用勾股定理获取每一个盒子离克隆出来的盒子的距离
+                    if (smalldistance < minValue) { //比较
+                        minValue = smalldistance; //获取最小值
+                        minIndex = $(this).index(); //获取最小值对应的索引
+                    }
+                });
+                if (minIndex == $(that).index()) { //如果当前最小距离的那个盒子和拖拽的盒子索引相等的话，归位。
+                    $clone.animate($(that).position(), 400, function() {
+                        $(that).removeClass('moving').html($clone.html()); //恢复被克隆盒子的相关样式
+                        $(this).remove(); //移除被克隆的盒子
+                        bstop=true;
+                    });
+                } else {
+                    var $minbox = $('#box .brick').eq(minIndex); //最小索引的盒子
+                    var $clone2 = $minbox.clone(); //克隆一个最小盒子的副本，添加相关样式
+                    $clone2.addClass('draging').css({
+                        left: $minbox.position().left,
+                        top: $minbox.position().top
+                    })
+                    $('#box').append($clone2); //追加
+                    $minbox.addClass('moving').html('');
+                    $clone.animate($minbox.position(), 100, function() { //克隆的内容运动到最小索引的盒子的位置
+                        $minbox.removeClass('moving').html($clone.html()); //移除相关样式，添加内容
+                        $clone.remove(); //移除克隆的盒子
+                        bstop = true;
+                        $clone2.animate($(that).position(), 400, function() {
+                            $(that).removeClass('moving').html($clone2.html());
+                            $clone2.remove();
+                            bstop = true;
+                            $("#box #sort_array").each(function (i){
+                                $(this).val(i+1);
+                            });
+                        });
+                    });
+                }
+            });
+        }
+        return false;
+    });
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	window.onload = function(){
+		var txt11 = document.getElementById("div1").innerHTML;
+		var txt22 = document.getElementById("div2").innerHTML;
+		function btnOnCilck(id,txt){
+			document.getElementById(id).onclick= function(){
+				this.nextSibling.innerHTML=txt;
+			} 
+		}
+		
+		btnOnCilck("btn1",txt11.concat(txt22));
+			btnOnCilck("btn2",txt11.substr(3,2));
+			btnOnCilck("btn3",txt11.slice(3,6));
+			btnOnCilck("btn4",txt11.substr(txt11.length-1,1));  //兼容的写法
+
+
+
+
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">my name is Tom.</div>
+	<div id="div2">what's your name?</div>
+	<button id="btn1">concat()</button><span></span><br>
+	<button id="btn2">substr()</button><span></span><br>
+	<button id="btn4">substr(-1) 兼容即取出最后一个值</button><span></span><br>
+	<button id="btn3">slice()</button><span></span><br>
+
+	
+</body>
+</html>

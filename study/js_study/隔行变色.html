@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 500px;
+			height: auto;
+		}
+
+		.box li{
+			width: 500px;
+			height: 30px;
+			line-height: 30px;
+		}
+
+		.oushu{
+			background: pink;
+		}
+
+		.name li{
+			width: 500px;
+			height: 30px;
+			line-height: 30px;
+			background: yellowgreen;
+		}
+		.red{
+			background: red!important;
+		}
+		.green{
+			background: green;
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<script>
+	window.onload = function(){
+		var box = document.getElementById('box');
+		var lis = box.getElementsByTagName('li');
+
+		for(var i=0;i<lis.length;i++){
+			if(i%2==0){
+				lis[i].style.backgroundColor = "pink";
+			}
+			lis[i].onmouseover= function(){
+						this.className = "red";
+			}
+
+			lis[i].onmouseout= function(){
+						this.className = "";
+			}
+	
+
+
+
+
+		}
+
+
+
+
+	}
+
+	</script>
+	
+
+	<div class="box" id="box">
+		<ul>
+			<li>123123123</li>
+			<li>123123</li>
+			<li>123123</li>
+			<li>123123</li>
+			<li>123123</li>
+			<li>123123</li>
+			<li>123123</li>
+			<li>123123</li>
+			<li>123123</li>
+			<li>123123</li>
+		</ul>
+
+
+	</div>
+
+
+	<div class="name">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+
+	</div>
+</body>
+</html>

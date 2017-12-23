@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			height: 3000px;
+		}
+		.gotop{
+			width: 50px;
+			height: 40px;
+			background: pink;
+			position: fixed;
+			top:80%;
+			left:80%;
+			border-radius: 50px;
+			text-align: center;
+			font-size: 12px;
+			padding-top: 10px;
+			cursor: pointer;
+			display: none;
+		}
+
+	</style>
+	<script>
+		window.onload = function(){
+			//封装scroll
+			function scroll(){
+				if(window.pageYOffset!=null){
+					return {
+						top:window.pageYOffset,
+						left:window.pageYOffset
+					}
+				}
+				else if(document.compatMode == "CSS1compat"){
+					return{
+						top:document.documentElement.scrollTop,
+						left:document.documentElement.scrollLeft
+					}
+				}
+				return{
+					top:document.body.scrollTop,
+					left:document.body.scrollLeft,
+				}
+			}
+
+
+			var gotop = document.getElementById("gotop");
+			var leader =0,target = 0, timer = null;
+			window.onscroll = function(){
+				if(scroll().top>300){
+					gotop.style.display="block";
+				}
+				else{
+					gotop.style.display="none";
+				}
+
+				leader= scroll().top;
+				
+			}
+			
+			gotop.onclick = function(){
+				target= 0;
+				
+				timer = setInterval(function(){
+					leader = leader + (target-leader)/10;
+					window.scrollTo(0,leader);
+				if(leader == 0){
+					clearInterval(timer);
+					}
+				},30)
+
+
+			}
+
+
+
+		}
+
+
+
+	</script>
+</head>
+<body>
+	<div class="gotop" id="gotop">返回<br>顶部</div>	
+</body>
+</html>

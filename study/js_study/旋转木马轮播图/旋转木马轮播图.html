@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+
+</head>
+<body>
+<div class="warp" id="warp">
+    <div class="slider" id="slider">
+        <ul>
+            <li><a href="#"><img src="images/slidepic1.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic2.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic3.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic4.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic5.jpg" alt=""/></a></li>
+
+        </ul>
+    </div>
+    <div class="arrow">
+        <a href="javascript:;" class="prev"><img src="images/prev.png" alt=""/></a>
+        <a href="javascript:;" class="next"><img src="images/next.png" alt=""/></a>
+
+    </div>
+</div>
+</body>
+</html>
+<script>
+    window.onload = function(){
+        var warp = document.getElementById("warp");
+        var arrow= warp.children[1];
+        var lis= document.getElementById("slider").children[0].children;
+        warp.onmouseover  =function(){
+            animate(arrow,{opacity:100});
+            clearInterval(timer);
+        }
+        warp.onmouseout = function(){
+            animate(arrow,{opacity:0});
+            clearInterval(timer);
+            timer= setInterval(autoplay,3000);
+        }
+
+        var json = [{
+            //1
+            width:400,
+            top:300,
+            left:0,
+            opacity:40,
+            z:1
+        },{
+            //2
+            width:500,
+            top:250,
+            left:50,
+            opacity:80,
+            z:3
+        },{
+            //3
+            width:800,
+            top:150,
+            left:200,
+            opacity:100,
+            z:5
+        },{ //4
+            width:500,
+            top:250,
+            left:650,
+            opacity:80,
+            z:4
+        },{
+
+            width:400,
+            top:300,
+            left:800,
+            opacity:40,
+            z:2
+        }];
+        var as= arrow.children;
+        var jieliu= true;  //用来控制节流
+        change();
+        for(var k in as){
+            as[k].onclick= function(){
+                if(this.className=="prev"){
+                    //alert("左侧");
+                        //alert(11);
+
+                    if(jieliu==true){
+                        change(false);
+                        jieliu=false;
+                    }
+                }
+                else{
+                   // alert("右侧");
+                    if(jieliu==true){
+                        change(true);
+                        jieliu=false;
+                    }
+                }
+            }
+
+        }
+
+        function change(flag){
+            if(flag){
+
+                //把最后一个删除， 并且把最后一个添加一个到json的第一个位置；
+                json.unshift(json.pop());
+            }
+            else{
+
+                //移除第一个，并且追加到最后一个
+                json.push(json.shift());
+            }
+
+            for( var i=0;i<lis.length;i++){
+               animate(lis[i],{
+                   width:json[i].width,
+                   top:json[i].top,
+                   left:json[i].left,
+                   opacity:json[i].opacity,
+                   zIndex:json[i].z
+
+               },function(){  //
+                   jieliu =true;
+               })
+            }
+        }
+
+        var timer= null;
+        timer=setInterval(autoplay,3000);
+        function autoplay(){
+            if(jieliu==true){
+                change(false);
+                jieliu=false;
+            }
+        }
+
+
+
+    }
+
+</script>
+<script src="js/animate.js"></script>

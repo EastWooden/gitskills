@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var PI= 3.1415926;
+	var txt = PI+"";
+	//先找出"."在字符串中的位置，在用substr方法截取字符串，从第一个字符开始，截取的位数为“txt.indexOf(".")+3”
+	console.log(txt.substr(0,txt.indexOf(".")+3));
+	console.log(parseInt(txt*100)/100);
+	console.log(PI.toFixed(2));  //保留两位小数
+	</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		*{
+			margin: 0;
+			padding:0;
+		}
+
+		li{
+			list-style: none;
+		}
+
+		#box{
+			width: 300px;
+			height: 400px;
+			border:solid 1px #ccc;
+			margin:100px auto;
+		}
+
+
+		#one{
+			width: 300px;
+			height: 400px;
+			border:solid 1px #ccc;
+			margin:100px auto;
+		}
+
+		.mt span{
+			background: pink;
+			padding:10px 20px 10px 19px;
+			text-align: center;
+			line-height: 20px;
+			display: inline-block;
+			cursor: pointer;
+		}
+
+		.mt span.current{
+			background: #fff;
+		}
+
+		.mb li{
+			display: none;
+		}
+
+		 .mb li.show{
+			display: block;
+		}
+
+
+	</style>
+</head>
+<body>
+
+<script>
+	window.onload = function(){
+		function tab(obj){
+			var obj= document.getElementById(obj);
+			var spans = obj.getElementsByTagName('span');
+			var lis = obj.getElementsByTagName('li');
+
+			for(var i= 0;i<spans.length;i++){
+				spans[i].index=i;
+				spans[i].onmouseover= function(){
+					for(var j=0;j<spans.length;j++){
+						spans[j].className="";
+						lis[j].className="";
+
+					}
+
+					this.className="current";
+					lis[this.index].className="show";
+
+
+				}
+
+			}
+
+
+		}
+
+		tab("box");
+		tab("one");
+
+	}
+
+
+</script>
+	
+
+
+<div id="box">
+	<div class="mt">
+		<span class="current">新闻</span>
+		<span>资讯</span>
+		<span>体育</span>
+		<span>焦点</span>
+
+	</div>
+	<div class="mb">
+		<ul>
+			<li class="show">万州人才网（www.wanzhoujob.com）属重庆优快人力资源管理有限公司旗下网站，成立于2007年4月，是渝东北地区专业且具影响力的人力资源服务平台，自创办以来，服务企业超过10000家，求职人员超500万次，创造了巨大的社会效益。</li>
+			<li>我们为企业提供人才查询、职位发布、广告制作、现场招聘、专场招聘、人事代理、劳务派遣、人力资源培训等综合人力资源服务。</li>
+			<li>旗下现有：万州人才网、汇杰人才市场、汇杰职业培训学校、汇杰创客工场，汇杰职工帮扶站，以及万州区中小企业公共服务中心。</li>
+			<li>未来，公司将以万州人才网、汇杰人才市场、汇杰职业培训学校、汇杰创客工场、汇杰职工帮扶站和中小企业公共服务平台为依托，立足万州，着眼渝东北，为“成为渝东北地区人力资源服务行业的领导者”而努力奋斗！</li>
+		</ul>
+	</div>
+
+
+</div>
+
+
+<div id="one">
+	<div class="mt">
+		<span class="current">新闻</span>
+		<span>资讯</span>
+		<span>体育</span>
+		<span>焦点</span>
+
+	</div>
+	<div class="mb">
+		<ul>
+			<li class="show">万州人才网（www.wanzhoujob.com）属重庆优快人力资源管理有限公司旗下网站，成立于2007年4月，是渝东北地区专业且具影响力的人力资源服务平台，自创办以来，服务企业超过10000家，求职人员超500万次，创造了巨大的社会效益。</li>
+			<li>我们为企业提供人才查询、职位发布、广告制作、现场招聘、专场招聘、人事代理、劳务派遣、人力资源培训等综合人力资源服务。</li>
+			<li>旗下现有：万州人才网、汇杰人才市场、汇杰职业培训学校、汇杰创客工场，汇杰职工帮扶站，以及万州区中小企业公共服务中心。</li>
+			<li>未来，公司将以万州人才网、汇杰人才市场、汇杰职业培训学校、汇杰创客工场、汇杰职工帮扶站和中小企业公共服务平台为依托，立足万州，着眼渝东北，为“成为渝东北地区人力资源服务行业的领导者”而努力奋斗！</li>
+		</ul>
+	</div>
+
+
+</div>
+
+</body>
+</html>

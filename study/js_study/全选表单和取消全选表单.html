@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	window.onload = function(){
+		
+		function $(id){
+			return document.getElementById(id);
+		}
+
+		var input = document.getElementsByTagName('input');
+
+		/*$('btn1').onclick =function(){
+			for(var i=0;i<input.length;i++){
+				input[i].checked=true;
+			}
+		}
+		$('btn2').onclick = function(){
+			for(var i=0 ;i<input.length;i++){
+				input[i].checked=false;
+			}
+		}
+
+		$('btn3').onclick = function(){
+			for(var i = 0;i<input.length;i++){
+				if(input[i].checked == true ){
+					input[i].checked = false;
+				}
+				else{
+					input[i].checked = true;
+				}
+			}
+		}*/
+
+		function all(flag){
+			for(var i=0;i<input.length;i++){
+				input[i].checked=flag;
+			}
+		}
+
+		$('btn1').onclick =function(){
+			all(true);
+		}
+		$('btn2').onclick =function(){
+			all(false);
+		}
+
+		function fanxuan(){
+			for(var i=0;i<input.length;i++){
+				input[i].checked == true?input[i].checked=false:input[i].checked=true;
+			}
+		}
+
+		$('btn3').onclick =function(){
+			fanxuan();
+		}
+
+
+	}
+
+
+</script>
+<button id="btn1">全选</button>
+<button id="btn2">取消全选</button>
+<button id="btn3">反选</button>
+  <br>
+
+
+haha<input type="checkbox"> <br>
+haha<input type="checkbox"> <br>
+haha<input type="checkbox"> <br>
+haha<input type="checkbox"> <br>
+haha<input type="checkbox"> <br>
+</body>
+</html>

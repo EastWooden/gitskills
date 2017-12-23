@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+
+	}
+
+	li{
+		list-style: none;
+	}
+	img{
+		display: block;
+	}
+	.box{
+			width: 490px;
+			height: 170px;
+			padding:5px;
+			border: solid 1px #ccc;
+			margin:100px auto;
+			position: relative;
+	}
+	.innerbox{
+		width: 100%;
+		height: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.innerbox ul{
+		width: 1000%;
+		height: 170px;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	.innerbox ul li{
+		
+		width: 490px;
+		height: 170px;
+		float: left;
+	}
+	.box ol{
+		position:absolute;
+		top:150px;
+		left:300px;
+
+	}
+	.box ol li{
+		margin-left: 10px;
+		float:left;
+		background: #fff;
+		width: 18px;
+		height: 18px;
+		text-align: center;
+		line-height: 18px;
+		cursor: pointer;
+	}
+		.box ol li.current{
+			background: orange;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box" id="slider">
+		<div class="innerbox">
+			<ul>
+				<li><img src="images/011.jpg" alt=""></li>
+				<li><img src="images/022.jpg" alt=""></li>
+				<li><img src="images/033.jpg" alt=""></li>
+				<li><img src="images/044.jpg" alt=""></li>
+				<li><img src="images/055.jpg" alt=""></li>
+			</ul>
+		</div>
+		<ol>
+			<li class="current">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+	</div>
+	
+</body>
+</html>
+<script>
+	var slider = document.getElementById("slider");
+	var ul = slider.getElementsByTagName("ul")[0];
+	var ol= slider.children[1];
+	var olLis = ol.children;
+	var ulLis = ul.children;
+	var leader= 0;
+	var timer= null;
+	for(var i=0;i<olLis.length;i++){
+		olLis[i].index=i;
+		olLis[i].onmouseover = function(){
+			for(var j=0;j<olLis.length;j++){
+				olLis[j].className= "";
+				clearInterval(timer);
+			}
+			this.className="current";
+			var target=490*this.index;
+			timer= setInterval(play,30);
+			function play(){
+			leader= leader+(target-leader)/10;
+			ul.style.left=-leader+"px";
+			}	
+		}
+	}
+
+</script>

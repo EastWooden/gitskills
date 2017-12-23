@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        .slider{
+            width:500px;
+            height: 200px;
+            padding: 5px;
+            border:solid 1px #cccccc;
+            margin:100px auto;
+            position: relative;
+
+        }
+        .box{
+            width: 500px;
+            height: 200px;
+            position: relative;
+            top:0;
+            left:0;
+            overflow: hidden;
+            
+        }
+        .box ul{
+            width: 800%;
+            height: auto;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .box li{
+            float:left;
+        }
+        .slider ol{
+            overflow: hidden;
+            position: absolute;
+            top:80%;
+            left:50%;
+            margin-left:-75px;
+        }
+        .slider ol li{
+            width: 20px;
+            height: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size:12px;
+            background: #fff;
+            float:left;
+            margin-left: 6px;
+            color:red;
+            cursor: pointer;
+        }
+        .slider ol li.current{
+            background: orange;
+            color:#fff;
+        }
+
+    </style>
+</head>
+
+<body>
+<script>
+ window.onload= function(){
+     //获取元素
+     var slider = document.getElementById("slider");
+     var boxul = document.getElementById("boxul");
+     var boxulLis= boxul.children;
+     var target= 0,leader= 0,timer=null;
+
+    //操作元素
+     boxul.appendChild(boxulLis[0].cloneNode(true));
+     var ol= document.createElement("ol");
+     slider.appendChild(ol);
+     var ollis= ol.children;
+     for(var i=0;i<boxulLis.length-1;i++){
+         var li= document.createElement("li");
+         li.innerHTML=i+1;
+         ol.appendChild(li);
+
+         ollis[0].className="current";
+
+         boxulLis[i].index=i;
+     }
+
+     for(var i=0;i<ollis.length;i++){
+         ollis[i].index=i;
+         ollis[i].onmouseover= function(){
+             clearInterval(timer);
+             for(var j= 0;j<ollis.length;j++){
+                 ollis[j].className="";
+
+             }
+             this.className="current";
+            animate(boxul,-500*this.index,20);
+             key =circle=this.index;
+         }
+
+     }
+
+    //添加定时器
+     var timer=null;
+     var key=0;
+     var circle=0;
+     timer = setInterval(autoplay,3000);
+     function autoplay() {
+         //boxul动画部分
+         key++;
+         if(key>boxulLis.length-1){ //先判断后执行
+             boxul.style.left=0;
+             key=1;
+         }
+         animate(boxul,-key*500,20);
+         //小圆点改变背景颜色
+         circle++;
+         if(circle>ollis.length-1){ //先判断后执行
+             circle=0;
+         }
+         for(var i=0;i<ollis.length;i++){
+             ollis[i].className="";
+         }
+         console.log(circle);
+         ollis[circle].className="current";
+     }
+
+     slider.onmouseover= function(){
+            clearInterval(timer);
+     }
+
+     slider.onmouseout =function(){
+         timer =setInterval(autoplay,3000);
+     }
+
+
+    //动画封装函数
+     function animate(obj,target,speed){
+         clearInterval(obj.timer);
+         obj.timer = setInterval(function(){
+             var speed1= obj.offsetLeft<target?speed:-speed;
+             obj.style.left= obj.offsetLeft+speed1+"px";
+             var result = obj.offsetLeft-target;
+             if(Math.abs(result)<=speed1){
+                 clearInterval(obj.timer);
+                 obj.style.left=target+"px";
+             }
+         },20)
+     }
+
+
+
+
+ }
+</script>
+<div class="slider" id="slider">
+    <div class="box">
+        <ul id="boxul">
+            <li><img src="images/1.jpg" alt=""/></li>
+            <li><img src="images/2.jpg" alt=""/></li>
+            <li><img src="images/3.jpg" alt=""/></li>
+            <li><img src="images/4.jpg" alt=""/></li>
+            <li><img src="images/5.jpg" alt=""/></li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JQuery插件扩展方法</title>
+    <script src="../jquery-1.11.1.min.js"></script>
+    <script>
+        //定义全局的jQ插件的方法
+        $.log =function(){
+            console.log(new Date());
+        }
+
+        //定义实例的JQ插件的方法
+        $.fn.log=function(){
+            console.log($(this).text());
+        }
+
+        $.log();
+        $(function(){
+            $("div").log();
+        })
+
+
+    </script>
+</head>
+<body>
+    <div>skflsdklf</div>
+</body>
+</html>

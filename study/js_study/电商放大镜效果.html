@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+
+			margin:0 ;
+			padding:0;
+			
+		}
+
+		.box{
+			width: 350px;
+			height: 350px;
+			margin:100px 100px;
+			border: solid 1px #ccc;
+		}
+		.box_img{
+			width: 100%;
+			height: 100%;
+			background: url(images/001.jpg) no-repeat center;
+			position: relative;
+		}
+		.s_box{
+			width: 80px;
+			height: 80px;
+			background: orange;
+			opacity: 0.4;
+			position:absolute;
+			top:0;
+			left:0;
+			cursor:move;
+		}
+		
+		.big_box{
+			width: 450px;
+			height: 450px;
+			border: solid #ccc 1px;
+			position:absolute;
+			top:0;
+			left:360px;
+			overflow: hidden;
+		}
+		.big_box img{
+			display: block;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		.hide{
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<script>
+		window.onload = function(){
+			var box = document.getElementById("box");
+			var box_img = box.children[0];
+			var s_box = box_img.children[0];
+			var big_box =  box_img.children[1];
+			var big_box_img= big_box.children[0];
+
+			box_img.onmouseover = function(){
+				s_box.style.display="block";
+				big_box.style.display="block";
+			}
+
+			box_img.onmouseout = function(){
+				s_box.style.display="none";
+				big_box.style.display="none";
+			}
+			box_img.onmousemove = function(event){
+		
+				var event= event || window.event;
+				var x=event.clientX-this.offsetLeft-s_box.offsetWidth/2;
+				var y= event.clientY-this.offsetTop-s_box.offsetHeight/2;
+				console.log(event.clientX);
+				console.log(this.offsetLeft);
+				if(x<0){
+					x= 0;
+				}
+				else if(x >this.offsetWidth-s_box.offsetWidth){
+					x= this.offsetWidth-s_box.offsetWidth;
+				}
+				if(y<0){
+					y= 0;
+				}
+				else if(y>this.offsetWidth-s_box.offsetWidth){
+					y= this.offsetWidth-s_box.offsetWidth;
+				}
+				
+				s_box.style.left = x+"px";
+				s_box.style.top = y+"px";
+				big_box_img.style.left=-x*450/350+"px";
+				big_box_img.style.top=-y*450/350+"px";
+					
+			}
+
+
+			//缓动动画
+			
+			/*timer= setInterval(move,10);*/
+			/*function move(){
+				leaderX = leaderX+(targetX-leaderX)/10;
+				leaderY= leaderY+(targetY-leaderY)/10;
+				s_box.style.left = leaderX+"px";
+				s_box.style.top = leaderY+"px";
+				
+				targetX++;
+				targetY++;
+				if(targetX>=350||targetY>=350){
+					clearInterval(timer);
+				}
+
+				else{
+					s_box.style.left = targetX+"px";
+					s_box.style.top = targetY+"px";
+				}
+			}*/
+		}
+
+	</script>
+
+	<div class="box" id="box">
+		<div class="box_img">
+			<div class="s_box hide"></div>
+			<div class="big_box hide">
+				<img src="images/0001.jpg" alt="">
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

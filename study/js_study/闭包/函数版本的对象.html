@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>封装对象</title>
+</head>
+<body>
+  <script>
+      function  Person(name,age) {
+          var obj = {}; //声明对象
+          obj.name = name;
+          obj.age = age;
+          obj.showName = function () {
+              alert("我的名字叫" + name);
+          }
+          obj.showAge = function () {
+              alert("我的年龄是" + age);
+          }
+          return obj; //返回对象；
+      }
+
+      var xiaoming  = Person("小明",23);
+      console.log(xiaoming.name);
+      console.log(xiaoming.age);
+      xiaoming.showName();
+      xiaoming.showAge();
+
+      var daming  = Person("大明",24);
+      console.log(daming.name);
+      console.log(daming.age);
+      daming.showName();
+      daming.showAge();
+  </script>
+</body>
+</html>

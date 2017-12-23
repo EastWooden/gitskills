@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#container{
+			width: 1024px;
+			height: auto;
+			margin:0 auto;
+		}
+		#container  ul li{
+			float: left;
+			list-style: none;
+			border: solid 1px #ccc;
+			margin-left: 10px;
+		}
+
+		.clearfix:after{
+			content: '.';
+			visibility: hidden;
+			clear: both;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="container" class="clearfix">
+		
+	</div>
+</body>
+<script type="text/javascript">
+	/*定义对象属性*/
+	function Product(){
+		/*产品的图片*/
+		this.img='';
+		/*产品的名称*/
+		this.name='';
+	}
+	
+	/*定义对象方法*/
+	Product.prototype={
+		bindDOM:function(){
+			var str='';
+			str+='<li>';
+				str+='<dl>';
+					str+='<dt class="product-img"></dt>';
+						str+='<img src="'+this.img+'">';
+					str+='<dd class="product-des">';
+					str+='<p>'+this.name+'</p>';
+					str+='</dd>';
+				str+='</dl>';
+			str+='</li>';
+
+			return str;
+
+		},
+		bindEvents:function(){
+
+		}
+	}
+	/*实例化对象1*/
+	var product1=new Product();
+	product1.img="http://img.wanzhoujob.com/advlogo/1YE18K0UU66009.gif";
+	product1.name="百世达汽车";
+	/*实例化对象2*/
+	var product2= new Product();
+	product2.img="http://img.wanzhoujob.com/advlogo/QD79FXQ0YR5444.gif";
+	product2.name="银河集团";
+	/*实例化对象3*/
+	var product3= new Product();
+	product3.img="http://img.wanzhoujob.com/advlogo/JFRBWN3JVS5930.gif";
+	product3.name="欧派橱柜";
+
+	var products=[product1,product2,product3];
+	var str ="";
+	//遍历所有对象;
+	for(var i=0;i<products.length;i++){
+		str+=products[i].bindDOM();
+	}
+	var container = document.getElementById('container');
+	var ul= document.createElement("ul");
+	ul.innerHTML=str;
+	container.appendChild(ul);	
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: pink;
+
+        }
+    </style>
+    <script src="../jquery-1.11.1.min.js "></script>
+</head>
+<body>
+<script>
+
+    $(function(){
+        $(document).on("mousemove",function(e){
+           $("div").css({
+               "position":"absolute",
+               "top": e.pageY-100,
+               "left": e.pageX-100
+
+           });
+        });
+
+
+    })
+</script>
+
+<div></div>
+</body>
+</html>

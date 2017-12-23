@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            paddding:0;
+        }
+        div{
+            margin:100px;
+        }
+        #test{
+            width: 500px;
+            height: 300px;
+        }
+        #another{
+            width: 300px;
+            height: 300px;
+        }
+        #demo{
+            width:100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            top:0;
+            left: 0;
+            display: none;
+            font-size:12px;
+            overflow: hidden;
+
+        }
+    </style>
+</head>
+<body>
+<span id="demo"></span>
+<div id="test">
+    必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的
+    文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字
+    必须的文字 必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字
+    必须的文字必须的文字必须的文字
+    必须的文字必须的文字必须的文字必须的文字必须的文字
+
+</div>
+<div id="another">
+    必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的
+    文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字
+    必须的文字 必须的文字必须的文字必须的文字必须的文字必须的文字必须的文字
+    必须的文字必须的文字必须的文字
+    必须的文字必须的文字必须的文字必须的文字必须的文字
+</div>
+</body>
+</html>
+<script>
+    function $(id){return document.getElementById(id)};
+    document.onmouseup=function(event){
+        var event = event || window.event;
+        var x= event.clientX;
+        var y= event.clientY;
+        var txt; //用于存放选中的文字
+        if(window.getSelection){  //判断浏览器是否支持这个房方法 这个方法用于标准浏览器
+            txt=window.getSelection().toString();
+        }
+        else{
+            txt = document.selection.createRange().text;  //这个方法用于IE 678
+        }
+        if(txt){  //有文字为真 ""这个为假
+            showBox(x,y,txt);
+        }
+    }
+    document.onmousedown = function(event){ //点击页面其他地方方框隐藏
+        var event = event || window.event;
+        var targetId = event.target?event.target.id:event.srcElement.id;//获取点击的目标的ID
+        if(targetId!="demo"){
+            $("demo").style.display="none";
+        }
+    }
+    function showBox(x,y,mousetxt){
+        setTimeout(function(){
+            $("demo").style.display="block";
+            $("demo").style.left=x+"px";
+            $("demo").style.top=y+"px";
+            $("demo").innerHTML=mousetxt;
+        },1000)
+    }
+</script>

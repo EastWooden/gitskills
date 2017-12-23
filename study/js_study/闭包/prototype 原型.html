@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    function Person(name,age){ //构造函数
+        this.name=name;//只写属性
+        this.age= age;
+    }
+    Person.prototype.showName= function(){   /* 继承原型*/
+        alert("我的名字是" + this.name);
+    }
+    Person.prototype.showAge= function(){
+        alert("我的年龄 是" +this.age);
+
+
+    }
+
+    var xiao= new Person("xiao",23);
+    var da = new Person("DA",25);
+    da.showAge();
+    xiao.showAge();
+
+</script>
+</body>
+</html>

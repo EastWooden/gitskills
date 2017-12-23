@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jquery-Ajax ajax的返回类型 </title>
+	<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<input type="button" id='btn' value="查询">
+	<div id="showInfo"></div>
+	<script type="text/javascript">
+	$(function(){
+			$("#btn").on('click',function(){
+				$.ajax({
+					/*url:'./02data.php',*/
+					/*dataType:'json', */
+
+					/*url:'03data.php',
+					dataType:'html',*/
+
+					url:'04data.php',
+					dataType:'script',
+					type:'get',
+					success:function(data){  //请求成功，返回值的处理
+							/*var tag="";
+							for(var k in data){
+								tag+=data[k];
+							}
+
+							$("#showInfo").html(tag);*/
+
+							eval(data);
+							
+
+					},error:function(e){
+
+						console.log(e);
+					}
+
+				});
+			})
+	})
+
+	</script>
+</body>
+</html>

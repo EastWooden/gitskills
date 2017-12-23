@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装原生ajax</title>
+</head>
+<body>
+	<div id="ems">
+		<input type="text" id="code">
+		<input type="button" id="btn" value="查询">
+	</div>
+	<div id="list">
+		
+	</div>
+</body>
+	<script type="text/javascript">
+	function ajax(data){
+		//data= {data:"",dataType:"xml/json",type:"get/post",url:"",asyn:"true/post",success:function(){},failuer:function(){}}
+		//data:{useername:123,password:456}
+		//第一步：创建xhr对象
+		var xhr = null;
+		if(window.XMLHttpRequest){
+
+			xhr =new XMLHttpRequest();
+		}else{
+
+			xhr =  new ActiveXObeject("Microsoft.XMLHTTP");
+		}
+		//第二步：准备发送前的一些配置参数
+		var type= data.type=="get"?'get':'post';
+		var url= "";
+		if(data.url){
+			url=data.url;
+			if(type=='get'){
+				url+="?"+data.data+"&_t="+new Date().getTime();
+			}
+		}
+		var flag=data.asyn=='true'?'true':'false';
+		xhr.open("get",url,true);
+
+		//第三不：执行发送的动作
+		if(type=='get'){
+			xhr.send(null);//null兼容老版本的浏览器
+		}else if(type=='post'){
+			xhr.setRequestHeader("content-Type","application/x-www-form-urlencoded")
+			xhr.send(data.data);
+		}
+		
+
+		//第四步：执行回调函数
+		xhr.onreadystatechange= function(){
+			if(this.readyState==4){
+				if(this.status==200){
+					if(typeof data.success =='function'){
+						var d=data.dataType=="xml"?xhr.responseXML:xhr.responseText;
+						data.success(d);
+					}
+				}
+				else{
+					if(typeof data.failuer=='function'){
+						data.failuer();
+					}
+				}
+			}
+
+		}
+
+	}
+
+	window.onload=function(){
+		var btn=document.getElementById("btn");
+		btn.onclick= function(){
+			var param={
+				url:"fzajax.php",
+				type:"get",
+				dataType:"json",
+				success:function(data){
+					alert(data);
+				}
+			}
+			ajax(param);
+
+		}
+	}
+
+	</script>
+</html>

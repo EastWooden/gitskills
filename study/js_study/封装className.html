@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	window.onload = function(){
+		function getclass(classname){
+
+			//支持的浏览器，直接返回
+			if(document.getElementsByClassName){
+			return document.getElementsByClassName(classname);
+			}
+			//不支持的浏览器
+			 var arr=[];//用语存放满足的数组
+			 var targets = document.getElementsByTagName("*");
+			 for(var i = 0;i<targets.length;i++){  
+			 //遍历所有的元素，取出满足条件的元素，添加到数组里面
+			 	if(targets[i].className == classname){
+			 		arr.push(targets[i]);
+			 	}
+			 	
+			 }
+			 return arr;
+		}
+		console.log(getclass("demo").length);
+	}
+
+
+	</script>
+
+
+
+	<div></div>
+	<div></div>
+	<div class="demo"></div>
+	<div></div>
+	<div></div>
+	<div class="demo"></div>
+	<div></div>
+	<div class="demo"></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

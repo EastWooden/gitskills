@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularJS 指令</title>
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+	<!-- <div ng-app="" ng-init="firstName=john" >
+		<p>请你输入您的名字：</p>
+		<input type="text" ng-model="firstName">
+		<p>你输入的为：{{firstName}}</p>
+	</div> -->
+
+ <!-- <div ng-app="" ng-init="price=1;qulity=5">
+ 	 		<p>请输入单价：<input type="text" ng-model="price"></p>
+ 	 		<p>请输入数量: <input type="text" ng-model="qulity"></p>
+ 	 	
+ 	 		<p>总价为：{{price*qulity}}</p>
+ 	 		
+ </div>  -->
+	
+	<!-- <h1>重复HTML元素</h1>
+	<div ng-app="" ng-init="names=['josn','meiko','uzi','pdd']">
+		<p>使用ng-repeat来循环数组</p>
+		<ul>
+			<li ng-repeat="x in names">
+				{{ x }}
+			</li>
+		</ul>
+	</div>
+	
+	<p>ng-repeat指令用在一个对象数组上</p>
+	<div ng-app="" ng-init="names=[
+	{name:'uzie',conuntry:'china'},
+	{name:'pdd',conuntry:'russia'},
+	{name:'meiko',conuntry:'korea'}]">
+	<p>循环对象：</p>
+	<ul>
+		<li ng-repeat="x in names">
+			{{ x.name+','+x.conuntry}}
+		</li>
+	</ul>
+		
+	</div> -->
+
+	<h1>创建自定义指令</h1>
+	<runoob-directive></runoob-directive>
+	<div runoob-directive></div>
+	<script type="text/javascript">
+	var app=angular.module("myApp",[]);
+	app.directive("runoobDirective",function(){
+		return{
+			restrict:"E",//作为元素名使用
+			restrict:"A",//作为属性使用
+			restrict:"C",//作为类名使用
+			restrice:"M",//作为注释使用
+			template:"<h1>自定义指令！</h1>"
+		};
+	})
+	</script>
+
+</body>
+</html>

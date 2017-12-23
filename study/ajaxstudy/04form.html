@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax异步提交</title>
+</head>
+<body>
+	<div id="showInfo"></div>
+	<form>
+		<label for="">用户名：</label><input type="text" id="username" name="username"><br>
+		<label for="">密码：</label><input type="password" id="password" name="password"><br>
+		<input type="button" id="btn" value="注册">
+	</form>
+
+	<script type="text/javascript">
+	var btn =document.getElementById("btn");
+	var showInfo= document.getElementById("showInfo");
+	btn.onclick=function(){
+		var xhr=null;
+	  //判断浏览器是否支持XMLHttpRequest 对象
+	  if(window.XMLHttpRequest){
+	  	xhr=new XMLHttpRequest();  //标准浏览器
+	  }
+	  else{
+	  	xhr =new ActiveXObject("Microsoft.XMLHTTP"); //IE浏览器
+	  }
+	  var password = document.getElementById("password").value;
+	  var username = document.getElementById('username').value;
+	  //准备好了，去干什么事情
+	  var url= "./04form.php?username="+username+"&password="+password;
+	  xhr.open("get",url,true);
+	  //要做的事情
+	  xhr.onreadystatechange= function(){
+	  	if(xhr.readyState==4){
+	  		if(xhr.status==2){
+	  			var data= xhr.responseText;
+	  			if(data==1){
+	  				alert(11);
+	  				showInfo.innerHTML= "用户名或者密码不能为空";
+	  			}
+	  			else if(data==2){
+	  				showInfo.innerHTML="注册成功";
+	  			}
+	  			
+	  		}
+
+	  	}
+
+	  }
+
+	  xhr.send(null);
+	}
+
+	  
+	</script>
+</body>
+</html>

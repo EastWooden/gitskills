@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh_CN">
+    <meta charset="UTF-8">
+    <title>darg&drop</title>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+    <style>
+        #target{
+            height:300px;
+            margin-top: 30px;
+            border:dashed 2px #333333;
+            color:#cccccc;
+            text-align: center;
+            font-size: 50px;
+            line-height: 300px;
+        }
+
+        #target.actived{
+            color:#ddd;
+            border:dashed 2px #cccccc;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>darg&drop</h1>
+        <p>haha ,drag&drop练习</p>
+        <img src="http://static.wanzhoujob.com/v5/images/logo.gif" alt=""/>
+    </div>
+    <ul  id ="ulList" class="list-group">
+
+    </ul>
+    <div class="container">
+        <div id="target">
+            drag somthing into here!
+        </div>
+    </div>
+
+</body>
+    <script>
+        (function(){
+            var target= document.querySelector("#target");
+            //拖入的时候
+            target.addEventListener("dragenter",function(){
+                target.classList.add("actived");
+            });
+
+
+            target.addEventListener("dragleave",function(){
+
+                target.classList.remove("actived");
+            })
+            //如果要想捕获drop事件，就必须在该事件中阻止默认事件
+            target.addEventListener("dragover",function(e){
+
+                e.preventDefault();
+                e.stopPropagation();
+            })
+
+
+            var ulList= document.querySelector("#ulList");
+            target.addEventListener("drop",function(e){
+                if(e.dataTransfer.files.length){
+                    var inputFiles= e.dataTransfer.files;
+                    for(var i=0;i<inputFiles.length;i++) {
+                        //创建信息的子节点
+                        var li = document.createElement("li");
+                        li.setAttribute("class", "list-group-item");
+                        li.innerHTML = '<h4  class="list-group-item-heading">' + inputFiles[i].name +
+                                '</h4><p class="list-group-item-text">' + inputFiles[i].lastModifiedDate.toLocaleDateString() + '    '
+                                + (inputFiles[i].size / 1024).toFixed(2) + 'KB</p>';
+                        ulList.appendChild(li);
+                    }
+                }
+                else{
+                    var data=e.dataTransfer.getData("text/plain");
+                    if(data){
+                       this.innerHTML=data;
+                    }
+                    else{
+                        var img = document.createElement("img");
+                        img.src= e.dataTransfer.getData('text/uri-list');
+                        target.appendChild(img);
+                    }
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.remove("actived");
+            })
+
+
+        })();
+    </script>
+</html>

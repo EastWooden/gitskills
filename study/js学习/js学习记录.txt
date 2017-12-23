@@ -1,0 +1,386 @@
+JavaScript-确认（confirm 消息对话框）
+confirm 消息对话框通常用于允许用户做选择的动作，如：“你对吗？”等。弹出对话框(包括一个确定按钮和一个取消按钮)。
+
+语法:
+
+confirm(str);
+参数说明:
+
+str：在消息对话框中要显示的文本
+返回值: Boolean值
+返回值:
+
+当用户点击"确定"按钮时，返回true
+当用户点击"取消"按钮时，返回false
+注: 通过返回值可以判断用户点击了什么按钮
+
+看下面的代码:
+
+<script type="text/javascript">
+    var mymessage=confirm("你喜欢JavaScript吗?");
+    if(mymessage==true)
+    {   document.write("很好,加油!");   }
+    else
+    {  document.write("JS功能强大，要学习噢!");   }
+</script>
+
+
+JavaScript-提问（prompt消息对话框）
+prompt 弹出消息对话框，通常用于询问一些需要与用户交互的信息。弹出消息对话框（包好一个确定按钮，取消按钮与一个文本输入框）。
+ 
+javaScript-打开新窗口（window.open）
+
+open()方法可以查找一个已经存在或者新建的浏览器窗口。
+window.open([URL],[窗口名称],[参数字符串])
+
+参数说明:
+
+URL：可选参数，在窗口中要显示网页的网址或路径。如果省略这个参数，或者它的值是空字符串，那么窗口就不显示任何文档。
+窗口名称：可选参数，被打开窗口的名称。
+    1.该名称由字母、数字和下划线字符组成。
+    2."_top"、"_blank"、"_self"具有特殊意义的名称。
+       _blank：在新窗口显示目标网页
+       _self：在当前窗口显示目标网页
+       _top：框架网页中在上部窗口中显示目标网页
+    3.相同 name 的窗口只能创建一个，要想创建多个窗口则 name 不能相同。
+   4.name 不能包含有空格。
+参数字符串：可选参数，设置窗口参数，各参数用逗号隔开。
+
+
+JavaScript-关闭窗口（window.close）
+close()关闭窗口
+
+用法：
+
+window.close();   //关闭本窗口
+或
+
+<窗口对象>.close();   //关闭指定的窗口
+例如:关闭新建的窗口。
+
+<script type="text/javascript">
+   var mywin=window.open('http://www.imooc.com'); //将新打的窗口对象，存储在变量mywin中
+   mywin.close();
+</script>
+注意:上面代码在打开新窗口的同时，关闭该窗口，看不到被打开的窗口。
+
+
+
+HTML文档可以说由节点构成的集合，三种常见的DOM节点:
+
+1. 元素节点：上图中<html>、<body>、<p>等都是元素节点，即标签。
+
+2. 文本节点:向用户展示的内容，如<li>...</li>中的JavaScript、DOM、CSS等文本。
+
+3. 属性节点:元素属性，如<a>标签的链接属性href="http://www.imooc.com"。
+
+
+
+innerHTML 属性
+innerHTML 属性用于获取或替换 HTML 元素的内容。
+
+语法:
+
+Object.innerHTML
+注意:
+
+1.Object是获取的元素对象，如通过document.getElementById("ID")获取的元素。
+
+2.注意书写，innerHTML区分大小写。
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>innerHTML</title>
+</head>
+<body>
+<h2 id="con">javascript</H2>
+<p> JavaScript是一种基于对象、事件驱动的简单脚本语言，嵌入在HTML文档中，由浏览器负责解释和执行，在网页上产生动态的显示效果并实现与用户交互功能。</p>
+<script type="text/javascript">
+  var mychar= document.getElementById("con");           ;
+  document.write("原标题:"+mychar.innerHTML+"<br>"); //输出原h2标签内容
+  mychar.innerHTML="hello world";
+  document.write("修改后的标题:"+mychar.innerHTML); //输出修改后h2标签内容
+</script>
+</body>
+</html>
+
+
+
+
+改变 HTML 样式
+HTML DOM 允许 JavaScript 改变 HTML 元素的样式。如何改变 HTML 元素的样式呢？
+
+语法:
+
+Object.style.property=new style;
+注意:Object是获取的元素对象，如通过document.getElementById("id")获取的元素。
+
+基本属性表（property）:
+
+
+
+注意:该表只是一小部分CSS样式属性，其它样式也可以通过该方法设置和修改。
+
+看看下面的代码:
+
+改变 <p> 元素的样式，将颜色改为红色，字号改为20,背景颜色改为蓝：
+
+<p id="pcon">Hello World!</p>
+<script>
+   var mychar = document.getElementById("pcon");
+   mychar.style.color="red";
+   mychar.style.fontSize="20";
+   mychar.style.backgroundColor ="blue";
+</script>
+注意-->JS中调用样式时，使用连字符的属性名称需要改为驼峰式的名称才能正常使用，如mychar.style.backgroundColor，css中的background-color要更改为backgroundColor，去连字符，第二个单词首字母大写。
+
+
+
+
+
+
+
+
+显示和隐藏（display属性）
+网页中经常会看到显示和隐藏的效果，可通过display属性来设置。
+
+语法：
+
+Object.style.display = value
+注意:Object是获取的元素对象，如通过document.getElementById("id")获取的元素。
+
+value取值:
+
+none  此元素不会被显示（即隐藏）
+
+block 此元素将显示为块级元素 （即显示）
+
+
+
+
+
+
+
+
+控制类名（className 属性）
+className 属性设置或返回元素的class 属性。
+
+语法：
+
+object.className = classname
+作用:
+
+1.获取元素的class 属性
+
+2. 为网页内的某个元素指定一个css样式来更改该元素的外观
+
+
+
+
+自加一，自减一 ( ++和- -)
+算术操作符除了(+、-、*、/)外，还有两个非常常用的操作符，自加一“++”；自减一“--”。首先来看一个例子：
+
+mynum = 10;
+mynum++; //mynum的值变为11
+mynum--; //mynum的值又变回10
+上面的例子中，mynum++使mynum值在原基础上增加1，mynum--使mynum在原基础上减去1,其实也可以写成:
+
+mynum = mynum + 1;//等同于mynum++
+mynum = mynum - 1;//等同于mynum--
+
+
+
+
+
+
+
+
+保持先后顺序(操作符优先级）
+我们都知道，除法、乘法等操作符的优先级比加法和减法高，例如：
+
+var numa=3;
+var numb=6
+jq= numa + 30 / 2 - numb * 3;  // 结果为0
+如果我们要改变运算顺序，需添加括号的方法来改变优先级:
+
+var numa=3;
+var numb=6
+jq= ((numa + 30) / (2 - numb)) * 3; //结果是-24.75
+操作符之间的优先级（高到低）:
+
+算术操作符 → 比较操作符 → 逻辑操作符 → "="赋值符号
+
+如果同级的运算是按从左到右次序进行,多层括号由里向外。
+
+var numa=3;
+var numb=6;
+jq= numa + 30 >10 && numb * 3<2;  //结果为false
+
+
+
+
+
+
+
+
+组团，并给团取个名（如何创建数组）
+使用数组之前首先要创建，而且需要把数组本身赋至一个变量。好比我们出游，要组团，并给团定个名字“云南之旅”。
+
+创建数组语法：
+
+var myarray=new Array();
+          
+ 我们创建数组的同时，还可以为数组指定长度，长度可任意指定。
+
+var myarray= new Array(8); //创建数组，存储8个数据。 
+注意：
+1.创建的新数组是空数组，没有值，如输出，则显示undefined。
+2.虽然创建数组时，指定了长度，但实际上数组都是变长的，也就是说即使指定了长度为8，仍然可以将元素存储在规定长度以外。
+
+
+
+
+
+
+了解成员数量(数组属性length)
+如果我们想知道数组的大小，只需引用数组的一个属性length。Length属性表示数组的长度，即数组中元素的个数。
+
+语法：
+
+myarray.length; //获得数组myarray的长度
+注意：因为数组的索引总是由0开始，所以一个数组的上下限分别是：0和length-1。如数组的长度是5，数组的上下限分别是0和4。
+
+var arr=[55,32,5,90,60,98,76,54];//包含8个数值的数组arr 
+document.write(arr.length); //显示数组长度8
+document.write(arr[7]); //显示第8个元素的值54
+同时，JavaScript数组的length属性是可变的，这一点需要特别注意。
+
+arr.length=10; //增大数组的长度
+document.write(arr.length); //数组长度已经变为10
+数组随元素的增加，长度也会改变，如下:
+
+var arr=[98,76,54,56,76]; // 包含5个数值的数组
+document.write(arr.length); //显示数组的长度5
+arr[15]=34;  //增加元素，使用索引为15,赋值为34
+alert(arr.length); //显示数组的长度16
+ 
+
+
+
+\t  tabstop 制表符
+\n  newline 换行符
+转义符号 "\"
+
+
+
+
+
+
+多种选择（Switch语句)
+当有很多种选项的时候，switch比if else使用更方便。
+
+语法:
+
+switch(表达式)
+{
+case值1:
+  执行代码块 1
+  break;
+case值2:
+  执行代码块 2
+  break;
+...
+case值n:
+  执行代码块 n
+  break;
+default:
+  与 case值1 、 case值2...case值n 不同时执行的代码
+}
+语法说明:
+
+Switch必须赋初始值，值与每个case值匹配。满足执行该 case 后的所有语句，并用break语句来阻止运行下一个case。如所有case值都不匹配，执行default后的语句。
+假设评价学生的考试成绩，10分满分制，我们按照每一分一个等级将成绩分等，并根据成绩的等级做出不同的评价。
+
+代码如下:
+
+
+
+执行结果:
+
+评语: 及格，加油!
+注意:记得在case所执行的语句后添加上一个break语句。否则就直接继续执行下面的case中的语句，看以下代码:
+
+
+
+执行结果:
+
+评语: 继续努力!
+评语: 及格，加油!
+评语: 凑合，奋进
+评语: 很棒，很棒
+评语: 高手，大牛
+在上面的代码中，没有break停止语句，如果成绩是4分，则case 5后面的语句将会得到执行，同样，case6、7-10后面的语句都会得到执行。
+
+
+
+重复重复（for循环）
+很多事情不只是做一次，要重复做。如打印10份试卷，每次打印一份，重复这个动作，直到打印完成。这些事情，我们使用循环语句来完成，循环语句，就是重复执行一段代码。
+
+for语句结构：
+
+for(初始化变量;循环条件;循环迭代)
+{     
+    循环语句 
+ }
+假如，一个盒子里有6个球，我们每次取一个，重复从盒中取出球，直到球取完为止。
+
+<script type="text/javascript">
+var num=1;
+for (num=1;num<=6;num++)  //初始化值；循环条件；循环后条件值更新
+{   document.write("取出第"+num+"个球<br />");
+}
+</script>
+
+
+
+反反复复(while循环)
+和for循环有相同功能的还有while循环, while循环重复执行一段代码，直到某个条件不再满足。
+
+while语句结构：
+
+while(判断条件)
+{
+    循环语句
+ }
+使用while循环，完成从盒子里取球的动作，每次取一个，共6个球。
+
+<script type="text/javascript">
+var num=0;  //初始化值
+while (num<=6)   //条件判断
+{
+  document.write("取出第"+num+"个球<br />");
+  num=num+1;  //条件值更新
+}
+</script>
+
+
+
+
+
+
+
+退出循环break
+在while、for、do...while、while循环中使用break语句退出当前循环，直接执行后面的代码。
+
+格式如下：
+
+for(初始条件;判断条件;循环后条件值更新)
+{
+  if(特殊情况)
+  {break;}
+  循环代码
+}
+当遇到特殊情况的时候，循环就会立即结束。看看下面的例子，输出10个数，如果数值为5，就停止输出。

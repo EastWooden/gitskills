@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>wuhuan</title>
+    <style>
+        body,html{
+            height: 100%;
+            margin:0px;
+            padding: 0px;
+            overflow: hidden;
+
+        }
+        aside{
+            width: 220px;
+            height: 100%;
+            float: left;
+            background: #dddddd;
+        }
+        aside ul li{
+            list-style: none;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        article{
+            height: 100%;
+            margin-left: 220px;
+            overflow: scroll;
+        }
+    </style>
+    <script src="data.js"></script>
+</head>
+<body>
+    <aside>
+        <ul id="listul">
+
+        </ul>
+    </aside>
+    <article id="article">
+
+    </article>
+</body>
+<script>
+    for(var title in data){
+        var lis = document.createElement("li");
+        lis.innerHTML = title;
+        lis.setAttribute("data-title",title);//为li添加标记属性
+        var listul= document.querySelector("#listul");
+        listul.appendChild(lis);
+    }
+    var listEle= document.querySelectorAll("#listul>li");
+    var article = document.getElementById("article");
+    for(var i=0;i<listEle.length;i++){
+        listEle[i].addEventListener("click",function(){
+            var datatile = this.dataset['title']; // 获取li data-title 属性值;
+            article.innerHTML=data[datatile];
+            //操作历史记录
+            if(window.history && history.pushState){
+                //添加一个新的历史记录
+                history.pushState(datatile,'titlename,title没有任何浏览器支持','?t='+datatile);
+            }
+            else{
+                console.log("不支持")
+            }
+
+        })
+    }
+    // 当我们在伪造的访问历史中前进或后退时会执行一个popstate事件
+    window.addEventListener("popstate",function(e){
+        console.log(e);
+        article.innerHTML=data[e.state];
+    })
+    var search = window.location.search; // ?t=jkaljdksfla
+    // 如果地址栏中的地址有中文，会以URL编码方式呈现
+    // decodeURI 可以转换到之前中文
+    var title = search.split('=')[1]; // ['?t','jkaljdksfla']
+    if (title) {
+        // 有值 decodeURI作用就是从URL编码转换到之前的状态
+        console.log(decodeURI(title));
+        article.innerHTML = data[decodeURI(title)];
+    }
+
+
+</script>
+</html>

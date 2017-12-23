@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	/*函数的闭包*/
+
+	function fn (){
+		var n=1;
+		var fn1=function(){
+
+			n++;
+			console.log(n);
+		}
+		return fn1;
+	}
+	var fn3= fn();
+	fn3();
+	fn3();
+	fn3();
+	//保留其作用域，内存不会被释放
+
+	/*构造函数*/
+	function juiceMachine(fruit){
+		this.fruit = fruit;
+		this.producejuice = function(){
+
+			console.log(this.fruit+"汁");
+		}
+	}
+
+	
+	var apple= new juiceMachine("苹果");
+	apple.producejuice();
+	var orange =new juiceMachine("桔子");
+	orange.producejuice();
+
+	//对象
+	//构造函数
+
+	</script>
+</body>
+</html>

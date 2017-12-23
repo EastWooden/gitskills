@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh_CN">
+    <meta charset="UTF-8">
+    <title>文件系统API</title>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <form  id ="forms"  action="" >
+        <!--对于表单里的input，可以通过name属性直接找到-->
+        <input id="input_file" name="input_file" type="file" multiple  class="form-control hidden"/>
+       <!-- <input  id="btn_read" type="button" value="读取文件" class="btn btn-danger"/>-->
+        <input  id="btn_select" type="button" class="btn btn-warning" value="选择文件"/>
+    </form>
+    <ul  id ="ulList" class="list-group">
+
+    </ul>
+</div>
+</body>
+<script>
+    (function(){
+        var forms= document.querySelector("#input_file");
+
+        var ulList= document.querySelector("#ulList");
+//       var btnRead=document.querySelector("#btn_read");
+        var btnSelect= document.querySelector("#btn_select");
+        btnSelect.addEventListener("click",function(){
+            forms.click();
+        })
+        //选择完成后
+        forms.addEventListener("change",function(){
+           var inputFiles= forms.files;
+           for(var i=0;i<inputFiles.length;i++){
+               //创建信息的子节点
+               var li= document.createElement("li");
+               li.setAttribute("class","list-group-item");
+               li.innerHTML='<h4  class="list-group-item-heading">'+inputFiles[i].name+
+                       '</h4><p class="list-group-item-text">'+inputFiles[i].lastModifiedDate.toLocaleDateString()+'    '
+                       +(inputFiles[i].size/1024).toFixed(2)+'KB</p>';
+
+               ulList.appendChild(li);
+
+           }
+       })
+    })();
+</script>
+</html>

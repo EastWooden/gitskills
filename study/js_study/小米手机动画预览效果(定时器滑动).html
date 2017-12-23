@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 512px;
+			height: 400px;
+			margin:100px auto;
+			overflow: hidden;
+			position: relative;
+		}
+		.box span{
+			position: absolute;
+			top:0;
+			left: 0;
+			width: 100%;
+			height: 200px;
+			cursor: pointer;
+		}
+
+		#pic{
+			position: absolute;
+			top:0;
+			left: 0;
+		}
+
+		.box span.picdown{
+			top:200px;
+		}
+	</style>
+</head>
+<body>
+	<script>
+	window.onload = function(){
+		function $(id){
+			return document.getElementById(id);
+		}
+		var num=0;//控制pic top值
+		var timer= null; //定时器的名称
+		var timer1=null;
+		$("picup").onmouseover = function(){
+			timer = setInterval(function(){
+				if(num<=-1070){ //如果top值小于等于1070，则清除定时器，不再执行动画
+					clearInterval(timer);
+				}
+				else{
+				num=num-3;
+				$("pic").style.top=""+num+"px";
+				}
+			},100);
+		}
+
+		$("picup").onmouseout = function(){
+			clearInterval(timer);
+		}
+
+		$("picdown").onmouseover= function(){
+			//alert(11);
+			timer1= setInterval(function(){
+				num= num+3;
+				if(num>=0){
+					clearInterval(timer1);
+				}
+				else{
+				$("pic").style.top=""+num+"px";
+				}
+				
+			},100);
+		}
+		$("picdown").onmouseout = function(){
+			clearInterval(timer1);
+		}
+
+	}
+
+	</script>
+	<div class="box">
+		<img src="images/mi.png" alt="" id="pic">
+		<span class="picup" id="picup"></span>
+		<span class="picdown" id="picdown"></span>
+	</div>
+</body>
+</html>

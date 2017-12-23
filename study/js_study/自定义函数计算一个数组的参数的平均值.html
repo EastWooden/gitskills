@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<script>
+	window.onload = function(){
+
+		function average(array){  //封装函数 求平均值
+			var sum=0;
+			var ave;
+			var num = array.length; //数组长度
+			for(var i=0;i<array.length;i++){
+				sum=sum+array[i];
+			}
+
+			ave = sum/num;
+			alert(ave);
+		}
+		var arr=[20,30,40,50,60,70,80];
+		average(arr);	
+	}
+	</script>
+	
+</body>
+</html>

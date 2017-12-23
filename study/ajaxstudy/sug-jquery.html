@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax-关键字百度搜索智能提示案列</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		.search{
+			width: 280px;
+			height:40px;
+			background: yellowgreen;
+			margin:0 auto;
+			margin-top: 100px;
+			padding-top:20px;
+			padding-left: 20px;
+		}
+		#list{
+			width: 300px;
+			margin:0px auto;
+			height: auto;
+			background: #ccc;
+		}
+		#list li{
+			list-style: none;
+			padding:10px 20px 10px 20px;
+
+		}
+
+		#keyword{
+			width: 200px;
+			height: 30px;
+		}
+		.box{
+
+			width:300px;
+			height: auto;
+		}
+
+	</style>
+	<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="box">
+	<div class="search">
+		<input type="text" id="keyword"  >
+		<input type="button" id="btn" value="点击搜索">
+
+	</div>
+	<div id="list">
+		
+	</div>
+
+</div>
+	
+
+	<script type="text/javascript">
+	$(function(){
+		
+		$("#keyword").keyup(function() {
+			var kw=$("#keyword").val();
+			var url="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+kw;
+			querySug(url);
+		});
+
+	})
+	function querySug(url){
+		$("#list").html("");
+		$.ajax({
+			type:"get",
+			dataType:"jsonp",
+			url:url,
+			async:true,
+			jsonp:"cb",
+			jsonpCallback:"callback",
+			success:function(data){
+				var ul= $("<ul></ul>")
+				$.each(data.s,function(i,element){
+					var e = $("<li></li>").append(element);
+					$(ul).append(e);
+
+				})
+				$("#list").append(ul);
+			},error:function(){
+				console.log("fail");
+			}
+		});
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	document.onclick = function(event){
+		/*console.log(event.clientX);
+		console.log(event.clientY);*/
+		//IE 678 要用以下写法
+		/*console.log(window.event.clientX);
+		console.log(window.event.clientY);
+*/
+		//兼容性的写法
+
+		var event = event || window.event;
+		console.log(event.clientX);//以可视区域为基准点  当前窗口
+		console.log(event.pageX);//以文档为基准点  
+		console.log(event.screenX);//是以我们电脑屏幕为基准点
+	}
+	</script>
+</body>
+</html>

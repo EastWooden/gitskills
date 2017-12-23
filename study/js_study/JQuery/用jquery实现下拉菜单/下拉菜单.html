@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.11.1.js"></script>
+    <style>
+        *{
+            marign:0px;
+            padding:0px;
+        }
+        li{
+            list-style: none;
+        }
+        a,a:hover{
+            text-decoration: none;
+        }
+        
+        .warp{
+            width: 300px;
+            height: 30px;
+            background: darkred;
+            margin: 100px auto;
+        }
+        .warp ul li{
+            width: 100px;
+            height: 30px;
+            float: left;
+            text-align: center;
+            position: relative;
+        }
+        .warp ul li a{
+            width: 100px;
+            height: 30px;
+            color: #ffffff;
+            display: block;
+            line-height: 30px;
+        }
+        .warp ul li ul{
+            position: absolute;
+            display: none;
+        }
+        .warp ul li ul li{
+            background: deeppink;
+        }
+    </style>
+</head>
+<body>
+<script>
+    $(document).ready(function(){
+        //实现下拉动画的第一种事件方法
+       /* $(".warp li").hover(function(){
+            $(this).children("ul").slideDown();
+        },function(){
+
+            $(this).children("ul").slideUp();
+        });*/
+        //实现下拉动画的第二种时间方法
+       /* $(".warp li").mouseenter(function(){
+
+            $(this).children("ul").slideDown();
+        });
+        $(".warp li").mouseleave(function(){
+            $(this).children("ul").slideUp();
+        });
+*/
+        //实现下拉动画的第三种方法
+       /* $(".warp li").hover(function(){
+
+            $(this).children("ul").slideToggle();
+        });*/
+
+        //实现下拉动画的第四种方法
+        $(".warp li").hover(function(){
+            var uls= $(this).children("ul");
+           if(uls.css("display")=="block"){
+               uls.css("display","none");
+           } else{
+               uls.css("display","block");
+           }
+        });
+
+    })
+</script>
+    <div class="warp">
+        <ul>
+            <li><a href="">一级菜单1</a>
+                <ul>
+                    <li><a href="">二级菜单1</a></li>
+                    <li><a href="">二级菜单2</a></li>
+                    <li><a href="">二级菜单3
+                    </a></li>
+                </ul>
+            </li>
+            <li><a href="">一级菜单2</a>
+                <ul>
+                    <li><a href="">二级菜单1</a></li>
+                    <li><a href="">二级菜单2</a></li>
+                    <li><a href="">二级菜单3</a></li>
+                </ul>
+            </li>
+            <li><a href="">一级菜单3</a>
+                <ul>
+                    <li><a href="">二级菜单1</a></li>
+                    <li><a href="">二级菜单2</a></li>
+                    <li><a href="">二级菜单3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

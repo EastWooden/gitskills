@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2 id="pro-title">产品的名称</h2>
+	<h3 id="pro-price">产品的价格</h3>
+	<p  id="pro-description">产品的描述</p>
+</body>
+<script>
+	/*1、先分析需要哪几个对象
+	2、分析每个对象的属性和方法
+	3、实现工具包
+	4、使用工具包*/
+	/*抽象*/
+	//定义产品的属性
+	function Product(){
+		/*产品的名称*/
+		this.title="iphone8";
+		/*产品的图片*/
+		this.images=[];
+		/*产品的描述*/
+		this.description="手机wonderful";
+		/*产品的价格*/
+		this.price=6900;
+	}
+	//定义产品的方法
+	//定义对象的两种方式
+	/*第一种*/
+	Product.prototype = {
+		/*购买*/
+		buy:function(){
+
+		},
+		/*获取详细信息*/
+		getdetail:function(){
+
+		},
+		bindDOM:function(){
+
+		},
+		bindEvents:function(){
+
+		}
+	}
+	/*第二种*/
+	//Product.prototype.buy= function(){};
+
+	window.onload=function(){
+		/*具体*/
+		var iphone32= new Product();
+		iphone32.title="玫瑰金色";
+		iphone32.price=4988;
+		var title= document.getElementById('pro-title');
+		var price= document.getElementById('pro-price');
+		var des=document.getElementById('pro-description');
+		title.innerHTML=iphone32.title;
+	}
+</script>
+</html>

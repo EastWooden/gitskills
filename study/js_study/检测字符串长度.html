@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var txt="what are you 你好";
+	function getStringLength(str){
+		var len=0;//存储字符长度；
+		var c=0;//存储字符的值；
+		for(var i=0;i<str.length;i++){
+			c = str.charCodeAt(i);
+			if(c>=0 &&c<=127){
+				len++;
+			}
+
+			else{
+				len=len+2;
+			}	
+		}
+		return len;
+	}
+	console.log(getStringLength(txt));
+	</script>
+</body>
+</html>

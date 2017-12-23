@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            top:50px;
+            left: 400px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">
+    开始
+</button>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var btn= document.getElementById("btn");
+    var  box= document.getElementById("box");
+    var target=0;
+    var timer=0;
+
+    btn.onclick= function(){
+        timer=setInterval(function(){
+            var step= (target-box.offsetLeft)/10;
+            step=step>0?Math.ceil(step):Math.floor(step);
+            box.style.left=box.offsetLeft+step+"px";
+            if(box.offsetLeft==target){
+                clearInterval(timer);
+            }
+        },20)
+    }
+    //动画原理盒子位置+步长
+
+
+</script>

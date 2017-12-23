@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	 div{
+	 	width: 100px;
+	 	height: 100px;
+	 	float: left;
+	 	margin:10px;
+	 	background: pink;
+	 }
+
+	</style>
+</head>
+<body>
+	<script>
+	window.onload =function(){
+
+		/*解决掉了IE678兼容性的问题并且取出了所有包含所需类名的元素（因有些元素包含多个类名）*/
+
+		function getclass(classname){
+			//判断浏览器是否支持获取类名节点
+			if(document.getElementsByClassName){
+				return document.getElementsByClassName(classname);
+			}
+			//不支持，执行下面代码
+			var arr=[];//用于存放数组
+			var dom = document.getElementsByTagName("*"); //获取dom里面所有的元素
+			for(var i=0;i<dom.length;i++){  //遍历所有的元素
+			 		var txtarr = dom[i].className.split(" "); //将类名字符串转化为数组,通过空格分割 
+			 		for(var j=0;j<txtarr.length;j++){ //遍历将字符串转为的数组
+			 			if(txtarr[j]==classname){  //如果这个数组里面包含所需类名，将其添加到自定义数组中存放
+			 				arr.push(dom[i]);	//我们要得是div	
+			 			}
+			 		} 	
+			}
+
+			return arr; //返回存放类名的输出
+
+		}
+
+		console.log(getclass("test").length);
+
+		var test = getclass("test");
+		var btn =document.getElementById("btn");
+		btn.onclick = function(){
+			for(var i=0;i<test.length;i++){
+			test[i].style.backgroundColor= "purple";
+			}
+		}
+		
+	}
+
+	</script>
+	<button id="btn">改变颜色</button>
+	<div class="test"></div>
+	<div class="demo test"></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div class="demo test demo1"></div>
+	<div class=""></div>
+	<div></div>
+	<div></div>
+
+</body>
+</html>

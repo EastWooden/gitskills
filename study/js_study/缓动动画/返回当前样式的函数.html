@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            margin:100px;
+            width: 100px;
+            height: 200px;
+            background: hotpink;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+</html>
+<script>
+    var demo= document.getElementById("demo");
+    console.log(getStyle(demo,"height"));
+
+
+    function getStyle(obj,attr){
+        if(obj.currentStyle){  //ie 浏览器
+            return obj.currentStyle[attr];
+        }
+        else{
+            return window.getComputedStyle(obj,null)[attr];  //w3c标准浏览器
+        }
+    }
+
+
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		.box{
+			width: 200px;
+			height: 240px;
+			background: #1c86fe;
+			margin:100px auto;
+		}
+		.box p{
+			text-align: center;
+			font-size: 14px;
+			color:#fff;
+			line-height: 80px;
+		}
+		.box span{
+			width: 130px;
+			height: 130px;
+			background: orange;
+			text-align: center;
+			line-height: 130px;
+			display: block;
+			margin:0 auto;
+			font-size:80px;
+		}
+	</style>
+</head>
+<body>
+	<script>
+	window.onload = function(){
+		var box = document.getElementById("box");
+		var childrens = box.children;
+		var date = new Date();
+		var arr = ["星期天","星期一","星期二","星期三","星期四","星期五","星期六",]
+		childrens[0].innerHTML = date.getFullYear() +"-"+date.getMonth()+"-"+date.getDate()+"    "+arr[date.getDay()];
+		childrens[1].innerHTML = date.getDate();
+	}
+	
+
+
+	</script>
+	<div class="box" id="box">
+		<p></p>
+		<span></span>
+	</div>
+</body>
+</html>

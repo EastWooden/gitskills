@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ems查询订单号物流信息</title>
+	<style type="text/css">
+		#ems{
+			width: 250px;
+			height: 200px;
+			padding:20px 0px 20px 20px;
+			background: yellowgreen;
+			margin:0 auto;
+		}
+
+		#list{
+			color: #fff;
+			margin-top: 20px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="ems">
+		<input type="text" id="code">
+		<input type="button" value="查询" id="btn">
+		<div id="list">
+		
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+		var btn= document.getElementById("btn");
+		var code= document.getElementById("code");
+
+		btn.onclick= function(){
+			var codevalue= code.value;
+			var xhr = null;
+			if(window.XMLHttpRequest){
+				xhr=new XMLHttpRequest();
+			}
+			else{
+				xhr= new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+			xhr.open("get","./07ems.php?code="+code)
+
+			xhr.onreadystatechange =function(){
+
+				if(xhr.readyState==4 && xhr.status==200){
+					var data = JSON.parse(this.responseText);
+					if(data.statue==0){
+
+						var list= data.data.info.context;
+						var tag ='';
+						for(var i=0;i<list.length;i++){
+							var item= list[i];
+							var time =item.time;
+							var desc = item.desc;
+
+							var t = new Date();
+							t.setTime(item.time+"000");
+
+							tag +="<li><div>"+time+"</div><div>"+desc+"</div><li>"
+							var ul =document.createElement("ul");
+							ul.innerHTML=tag;
+							
+						}
+
+						document.getElementById("list").appendChild(ul);
+
+					}
+					else{
+						var info =data.msg;
+						document.getElementById("list").innerHTML= info;
+
+					}
+
+				}
+
+			}
+
+			xhr.send(null);
+
+
+		}
+
+
+	}
+
+</script>
+</html>

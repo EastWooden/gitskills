@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0px;
+			padding:0px;
+		}
+
+		.search{
+			width: 300px;
+			height: 50px;
+			margin:100px auto;
+			position: relative;
+		}
+
+		#txt{
+			width: 200px;
+			height: 30px;
+			outline: 0 none;
+		}
+		.search label{
+			color:#ccc;
+			font-size: 12px;
+			position: absolute;
+			top:9px;
+			left: 20px;
+			cursor: text;
+		}
+
+	</style>
+	<script type="text/javascript" src="http://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+
+<script>
+	window.onload = function(){
+		var txt = document.getElementById('txt');
+		var message = document.getElementById('message');
+
+		// onpropertychange  事件兼容ie8
+
+		txt.oninput	= txt.onpropertychange = function(){
+
+			if(this.value == ""){
+				message.style.display= "block";
+			}
+
+			else{
+				message.style.display= "none";
+			}
+			
+		}
+
+
+	}
+
+
+</script>
+
+<body>
+
+
+	<div class="search">
+
+		<input type="text" id="txt">
+		<label for="txt" id="message">必败国际大牌</label>	
+
+
+	</div>
+	
+</body>
+<script>
+	 $(function(){
+
+ 	var $tanchuang = $("<div style=\'width:1024px;height:500px;margin:0 auto;\'   id=\'tanchuang\'><a href=\'http://img.wanzhoujob.com/zph/20170923/\'><img src=\'http://img.wanzhoujob.com/zph/ad/2017indexslider.jpg\' alt=\'\'></a></div>");
+ 	$(".adv-top-wrapper").before($tanchuang)
+
+
+
+ 
+   
+     $("#tanchuang").show().delay(5000).slideUp(2000);}
+
+    )
+</script>
+
+
+</html>
+

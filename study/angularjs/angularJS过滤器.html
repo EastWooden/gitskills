@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+	<div  ng-controller="personCtrl">
+	
+		<p>姓名为 {{ lastName | uppercase }}</p> <!-- 转换成大写 -->
+	
+	</div>
+	
+	<div   ng-controller="costCtrl">
+		单价：<input type="text" ng-model="price"><br>
+		数量：<input type="text" ng-model="qulity"> <br>
+		<p>总价为：{{price*qulity  | currency }} </p>
+	</div>
+
+	<script type="text/javascript">
+	var myApp=angular.module('myApp',[]);
+	myApp.controller('personCtrl',function($scope){
+		$scope.lastName="John";
+	})
+
+	myApp.controller('costCtrl',function($scope){
+		$scope.price=5;
+		$scope.qulity=5;
+	})
+	</script>
+</body>
+</html>

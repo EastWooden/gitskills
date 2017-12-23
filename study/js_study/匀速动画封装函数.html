@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box1{
+            width:100px;
+            height: 100px;
+            position: absolute;
+            top: 200px;
+            left: 0;
+            background: pink;
+        }
+        #box2{
+            width:200px;
+            height: 200px;
+            position: absolute;
+            top:400px;
+            left: 0;
+            background: purple;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">200</button>
+<button id="btn2">400</button>
+<div id="box1"></div>
+<div id="box2"></div>
+</body>
+</html>
+<script>
+    var btn1=document.getElementById("btn1");
+    var btn2 =document.getElementById("btn2");
+    var box1= document.getElementById("box1");
+    var box2 =document.getElementById("box2");
+    btn1.onclick = function(){
+        animate(box1,200,10);
+        animate(box2,500,10);
+    }
+    btn2.onclick = function(){
+        animate(box1,400,10);
+        animate(box2,800,10);
+    }
+    /*function animate(obj,target,speed){
+        obj.timer= setInterval(function(){
+            var speed1 = obj.offsetLeft<target? speed:-speed;//用来判断是+还是-
+            obj.style.left=obj.offsetLeft+speed1+"px"
+            var result = obj.offsetLeft - target;
+            if(Math.abs(result)<=speed1){ /!*判断什么时候该停下如果差值不大于5，说明到位置了*!/
+                clearInterval(obj.timer);
+                obj.style.left= target+"px";
+            }
+        },50)
+    }*/
+
+
+    function animate(obj,target,speed){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+            var speed1= obj.offsetLeft<target?speed:-speed;
+            obj.style.left= obj.offsetLeft+speed1+"px";
+            var result = obj.offsetLeft-target;
+            if(Math.abs(result)<=speed1){
+                clearInterval(obj.timer);
+                obj.style.left=target+"px";
+            }
+        },20)
+    }
+
+</script>
