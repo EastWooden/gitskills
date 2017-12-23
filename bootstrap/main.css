@@ -1,0 +1,26 @@
+.bgc_ddd{
+	background: #999;
+	height: 800px;
+}
+
+.navbar-inverse{
+	background:yellowgreen;
+	border:0;
+}
+.navbar-inverse .navbar-collapse>ul>li>a{
+	color:#fff;
+}
+.navbar-inverse .navbar-collapse>ul>li>a:hover{
+	color:#333;
+}
+.navbar{
+	margin-bottom:0px;
+}
+.navbar-toggle {
+	background: orange;
+	border: 0;
+}
+
+.navbar-inverse .navbar-toggle:hover{
+	background: red;
+}
