@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+    .left div,
+    .right div {
+        width: 500px;
+        height: 50px;
+        padding: 5px;
+        margin: 5px;
+        float: left;
+        border: 1px solid #ccc;
+    }
+    
+    .left div {
+        background: #bbffaa;
+    }
+    
+    .right div {
+        background: yellow;
+    }
+    #btn{
+        width:50px;
+        height: 50px;
+        background: yellowgreen;
+        position: fixed;
+        top:200px;
+        left:50%;
+        margin-left:-25px;
+        outline: none;
+        border: none;
+        border-radius: 25px;
+
+    }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+</head>
+
+<body>
+    <h2>slideToggle</h2>
+    <div class="left">
+        <div id="a1"></div>
+        <button id="btn">click</button>
+        <script type="text/javascript">
+
+        $("#btn").click(function(e) {
+            e.stopPropagation();
+            $("#a1").slideToggle(1000)
+        });
+        
+        </script>
+</body>
+
+</html>
