@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<title>小明身高1.75，体重80.5kg。请根据BMI公式（体重除以身高的平方）帮小明计算他的BMI指数，并根据BMI指数：</title>
+	<style>
+		#btn{
+			cursor: pointer;
+			text-align: center;
+			padding:10px;
+			background: yellowgreen;
+			color:#000;
+			border: 0;
+			outline: 0;
+			position: absolute;
+			top:0;
+			left: 0;
+			display: block;
+		}
+	</style>
+	<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+	<input type="buton" value="点击计算您的BMI指数" id="btn">
+</body>
+<script>
+	'use strict'
+	var btn =document.getElementById("btn");
+	btn.onclick= function(){
+		BMI();
+	}
+
+	function BMI(){
+		var height = parseFloat(prompt("请输入您的身高(单位为米)"));
+		var weight = parseFloat(prompt("请输入您的体重(单位为千克)"));
+		var BMI = weight/(height*height);
+		console.log(BMI);
+		if(BMI<=18.5){
+			result("#btn","过轻");
+		}else if(BMI<=25){
+			result("#btn","正常");
+		}else if(BMI<=28){
+			result("#btn","过重");
+		}else if(BMI<=32){
+			result("#btn","肥胖");
+		}else{
+			result("#btn","你是个大胖子");
+		}
+	}
+	
+	function result(id,string){
+		var id= $(id);
+		id.val(string);
+		id.animate({
+			left: "200px",
+			top: "500px",
+			width:"700px",
+			height:"400px",
+			fontSize:"5em"
+		},1000,function() {
+			alert("哈哈哈")
+		});		
+	}
+</script>
+</html>
