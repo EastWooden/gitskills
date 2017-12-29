@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp</title>
+	<script src="https://cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
+</head>
+<body>
+	<input type="button" value="提交" id="btn">
+	<div id="info"></div>
+	<!-- <script>
+		var info =document.getElementById("info");
+	
+		function callback(data){//这里的data为服务器端返回的数据
+		    var tag="";
+			for(var i= 0;i<data.length;i++){
+				tag+="<div>"+data[i]+"</div>";
+			}
+			var div  = document.createElement("div");
+			div.innerHTML=tag;
+			info.appendChild(div);
+		}
+		var btn = document.getElementById('btn');
+		btn.onclick= function(){
+			var script = document.createElement("script");
+			var url= "jsonp.php?_jsonp=callback";
+			script.src=url;
+			document.body.appendChild(script);
+		}
+	</script> -->
+	<script>
+	$(function(){
+
+		$("#btn").on('click', function(event) {
+			event.preventDefault();
+			$.ajax({
+				url: 'http://cdn.weather.hao.360.cn/api_weather_info.php?app=hao360&_jsonp=callback&code=101280101',
+				type: 'get',
+				dataType: 'jsonp',
+				jsonp:'_jsonp',
+				jsonpCallback:'callback',
+				success:function(data){
+					console.log(data);
+				}
+				
+			})
+
+		});
+			
+			
+	})
+
+	</script>
+
+</body>
+</html>
