@@ -61,5 +61,17 @@
 			alert("哈哈哈")
 		});		
 	}
+
+	function area_of_circle(r,pi){
+		var num = arguments.length;
+		var area=0;
+		if(num<2){
+			area = 3.14*r*r;
+		}else{
+			area =pi*r*r;
+		}
+		return area;
+	}
+	console.log(area_of_circle(2,3.1415926));
 </script>
 </html>
