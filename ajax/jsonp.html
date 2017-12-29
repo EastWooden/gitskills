@@ -40,7 +40,22 @@
 				jsonp:'_jsonp',
 				jsonpCallback:'callback',
 				success:function(data){
-					console.log(data);
+					console.log("公布日期："+data.pubdate);
+					console.log("公布时间："+data.pubtime);
+					var area = data.area;
+					var weather = data.weather;
+					var tag="";
+					$.each(area,function(i, el) {
+						
+						tag +="<span>"+el[0]+"</span>";
+					});
+					var $div = $("<div>"+tag+"</div>")
+					$("#info").html(tag);
+					$.each(weather,function(i,el){
+						console.log("时间："+el.date);
+						console.log("白天："+el.info.day[1]);
+						console.log("晚上:"+ el.info.night[1]);
+					})
 				}
 				
 			})
